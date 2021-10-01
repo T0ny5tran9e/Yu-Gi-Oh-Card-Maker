@@ -30,12 +30,12 @@ normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red')#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
         bxsz = ['Large','Medium','Small']#Level List
-        dbxsz = tk.StringVar(info_frame_Normal,'Medium')#Display Level
+        dbxsz = tk.StringVar(normal_pendulam_frame,'Medium')#Display Level
         dbxsz.set(bxsz[0])
-        hbxsz = Label(info_frame_Normal, text="Pendulam Box Size", font=("SAO UI", 18))#Card Frame Heading
-        hbxsz.place(x=10, y=135)
-        ebxsz = tk.Spinbox(info_frame_Normal, values=bxsz, state='readonly', textvariable=dbxsz)#Card Frame Choice
-        ebxsz.place(x=300, y=130, height=40, width=200)
+        hbxsz = Label(normal_pendulam_frame, text="Pendulam Box Size", font=("SAO UI", 18))#Card Frame Heading
+        hbxsz.place(x=10, y=15)
+        ebxsz = tk.Spinbox(normal_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Card Frame Choice
+        ebxsz.place(x=300, y=10, height=40, width=200)
         def switch():
                 global normal_switch_state
                                 
@@ -58,10 +58,10 @@ def normal_Pendulam():
         on=ImageTk.PhotoImage(onsz)
         off=ImageTk.PhotoImage(offsz)
         hpend = Label(info_frame_Normal, text="Is this a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
-        hpend.place(x=10, y=505)
+        hpend.place(x=10, y=435)
         # Create A Button
         on_button = tk.Button(info_frame_Normal, image = off, bd = 0, command = switch)
-        on_button.place(x=300,y=500)
+        on_button.place(x=300,y=430)
 
 #3Effect Monster
 info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=585)
@@ -215,13 +215,13 @@ class Monster_Info():
                 datk = tk.IntVar(info_frame_Normal)#Display ATK
                 ddef = tk.IntVar(info_frame_Normal)#Display DEF
                 hatk = tk.Label(info_frame_Normal, text="ATK", font=("SAO UI", 18))#Title Heading
-                hatk.place(x=10, y=435)
+                hatk.place(x=400, y=435)
                 hdef = tk.Label(info_frame_Normal, text="DEF", font=("SAO UI", 18))#Title Heading
-                hdef.place(x=200, y=435)
+                hdef.place(x=550, y=435)
                 eatk = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=datk)#Enter Title
-                eatk.place(x=100, y=430, height=40, width=60)
+                eatk.place(x=450, y=430, height=40, width=60)
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
-                edef.place(x=300, y=430, height=40, width=60)
+                edef.place(x=600, y=430, height=40, width=60)
                 normal_Pendulam()               
                 
                                 
