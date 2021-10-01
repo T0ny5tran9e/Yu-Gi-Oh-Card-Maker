@@ -26,7 +26,7 @@ typfrm3 = tk.Frame(info_frame_Normal)#3 Types Frame
 typfrm3.place(x=370,y=380,height=44,width=300)
 typfrm4 = tk.Frame(info_frame_Normal)#4 Types Frame
 typfrm4.place(x=370,y=380,height=44,width=300)
-normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red')#0 Types Frame
+normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red', width=678)#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
         bxsz = ['Large','Medium','Small']#Level List
@@ -47,7 +47,7 @@ def normal_Pendulam():
                                                                 
                 else:
                         on_button.config(image = on)
-                        normal_pendulam_frame.place(x=370,y=480,height=44,width=300)
+                        normal_pendulam_frame.place(x=0,y=480,height=600)
                         normal_switch_state = True
                                             
         #Define Our Images
