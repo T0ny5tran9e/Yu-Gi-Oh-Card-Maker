@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter.constants import SUNKEN
+from tkinter.constants import BOTH, LEFT, SUNKEN
 from tkinter.ttk import * 
 from tkinter import filedialog
 from PIL import Image,ImageTk
@@ -36,6 +36,12 @@ def normal_Pendulam():
         hbxsz.place(x=10, y=15)
         ebxsz = tk.Spinbox(normal_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Card Frame Choice
         ebxsz.place(x=300, y=10, height=40, width=200)
+        frmcanvas = tk.Canvas(info_frame_Normal)#Canvas for frame
+        frmcanvas.pack(side=LEFT,fill=BOTH)
+        pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=frmcanvas.yview)#Description Box Scrollbar
+        pendmainsb.pack(side='right', fill='both')
+        pendmainsb['yscrollcommand'] = pendmainsb.set
+        info_frame_Normal.bind("<Configure>", lambda e: frmcanvas.configure( scrollregion=frmcanvas.bbox("all")))
         def switch():
                 global normal_switch_state
                                 
@@ -166,7 +172,7 @@ class Monster_Info():
                 htsz.place(x=540, y=280)
                 etsz = tk.Spinbox(info_frame_Normal, from_=15 , to = 30, state = 'readonly', textvariable=dtsz)#Card Type Choice#Enter Title
                 etsz.place(x=545, y=320, height=40, width=60)
-                #Type
+                #Types
                 dtypv = tk.StringVar(info_frame_Normal,"0 Type")
                 dtyp1 = tk.StringVar(info_frame_Normal, value="Type 1")#Display Type1
                 dtyp2 = tk.StringVar(info_frame_Normal, value="Type 2")#Display Type2
