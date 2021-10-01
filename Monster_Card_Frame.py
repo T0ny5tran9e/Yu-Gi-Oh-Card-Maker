@@ -49,16 +49,16 @@ def Pendulam():
                         on_button.config(image = on)
                         normal_pendulam.place(x=370,y=480,height=44,width=300)
                         normal_switch_state = True
-                        #pass
+                        
                              
-        # Define Our Images
+        #Define Our Images
         onimg = Image.open("src\On.png")
         offimg = Image.open("src\Off.png") 
         onsz=onimg.resize((50,50))
         offsz=offimg.resize((50,50))
         on=ImageTk.PhotoImage(onsz)
         off=ImageTk.PhotoImage(offsz)
-        hpend = Label(info_frame_Normal, text="Is this card a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
+        hpend = Label(info_frame_Normal, text="Is this a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
         hpend.place(x=10, y=505)
         # Create A Button
         on_button = tk.Button(info_frame_Normal, image = off, bd = 0, command = switch)
