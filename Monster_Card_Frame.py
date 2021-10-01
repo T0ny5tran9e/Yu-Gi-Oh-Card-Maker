@@ -26,13 +26,13 @@ typfrm3 = tk.Frame(info_frame_Normal)#3 Types Frame
 typfrm3.place(x=370,y=380,height=44,width=300)
 typfrm4 = tk.Frame(info_frame_Normal)#4 Types Frame
 typfrm4.place(x=370,y=380,height=44,width=300)
-normal_pendulam = tk.Frame(info_frame_Normal, bg='red')#0 Types Frame
+normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red')#0 Types Frame
 normal_switch_state = False#True=on False=off
-def Pendulam():
+def normal_Pendulam():
         bxsz = ['Large','Medium','Small']#Level List
         dbxsz = tk.StringVar(info_frame_Normal,'Medium')#Display Level
         dbxsz.set(bxsz[0])
-        hbxsz = Label(info_frame_Normal, text="Card Level", font=("SAO UI", 18))#Card Frame Heading
+        hbxsz = Label(info_frame_Normal, text="Pendulam Box Size", font=("SAO UI", 18))#Card Frame Heading
         hbxsz.place(x=10, y=135)
         ebxsz = tk.Spinbox(info_frame_Normal, values=bxsz, state='readonly', textvariable=dbxsz)#Card Frame Choice
         ebxsz.place(x=300, y=130, height=40, width=200)
@@ -42,15 +42,14 @@ def Pendulam():
                 # Determin is on or off
                 if normal_switch_state:
                         on_button.config(image = off)
-                        normal_pendulam.place_forget()
+                        normal_pendulam_frame.place_forget()
                         normal_switch_state = False
                                                                 
                 else:
                         on_button.config(image = on)
-                        normal_pendulam.place(x=370,y=480,height=44,width=300)
+                        normal_pendulam_frame.place(x=370,y=480,height=44,width=300)
                         normal_switch_state = True
-                        
-                             
+                                            
         #Define Our Images
         onimg = Image.open("src\On.png")
         offimg = Image.open("src\Off.png") 
@@ -223,7 +222,7 @@ class Monster_Info():
                 eatk.place(x=100, y=430, height=40, width=60)
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
                 edef.place(x=300, y=430, height=40, width=60)
-                Pendulam()               
+                normal_Pendulam()               
                 
                                 
         def info_Effect_Monster():
