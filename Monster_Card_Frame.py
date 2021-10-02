@@ -12,8 +12,8 @@ monster_choice_frame.pack_propagate(0)
 monster_choice_frame.config(borderwidth=3, relief=SUNKEN)
 
 #2Normal Monster
-info_frame_Normal = tk.Frame(ui, bg='darkcyan', width=678, height=650)#Main Frame
-info_frame_Normal.place(x=300,y=20)
+info_frame_Normal = tk.Frame(ui, bg='darkcyan', width=678, height=700)#Main Frame
+info_frame_Normal.place(x=300,y=5)
 info_frame_Normal.pack_propagate(0)
 
 """info_canvas_Normal = tk.Canvas(info_frame_Normal)
@@ -24,13 +24,13 @@ info_canvas_Normal.create_window((0,0), window=info_frame_scrollable_frame_Norma
 info_canvas_Normal.configure(yscrollcommand=info_frame_scrollbar_Normal.set)
 #info_frame_Normal.pack()
 info_canvas_Normal.pack(side="left", fill="both", expand=True)
-info_frame_scrollbar_Normal.pack(side="right", fill="y")"""
+info_frame_scrollbar_Normal.pack(side="right", fill="y")
 
 info_canvas_Normal = tk.Canvas(info_frame_Normal)
 pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=info_canvas_Normal.yview)#Description Box Scrollbar
 pendmainsb.pack(side='right', fill='both')
 info_canvas_Normal['yscrollcommand'] = pendmainsb.set
-info_canvas_Normal.pack(side="left", fill="both", expand=True)
+info_canvas_Normal.pack(side="left", fill="both", expand=True)"""
 
 typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
 typfrm0.place(x=370,y=380,height=44,width=300)
@@ -46,18 +46,25 @@ normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red', width=678)#0 Types
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
         bxsz = ['Large','Medium','Small']#Level List
-        dbxsz = tk.StringVar(normal_pendulam_frame,'Medium')#Display Level
+        dbxsz = tk.StringVar(normal_pendulam_frame)#Display Pendulam Box Size
         dbxsz.set(bxsz[0])
-        hbxsz = Label(normal_pendulam_frame, text="Pendulam Box Size", font=("SAO UI", 18))#Card Frame Heading
-        hbxsz.place(x=10, y=15)
-        ebxsz = tk.Spinbox(normal_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Card Frame Choice
-        ebxsz.place(x=300, y=10, height=40, width=200)
+        hbxsz = Label(normal_pendulam_frame, text="Pendulam Box Size", font=("SAO UI", 18))#Pendulam Box Size Heading
+        hbxsz.place(x=10, y=5)
+        ebxsz = tk.Spinbox(normal_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Pendulam Box Size Choice
+        ebxsz.place(x=10, y=50, height=40, width=60)
+        dscal = tk.IntVar(info_frame_Normal)#Display Pendulam Scale
+        hscal = tk.Label(normal_pendulam_frame, text="Pendulam Scale", font=("SAO UI", 18))#Title Heading
+        hscal.place(x=170, y=5)
+        escal = tk.Spinbox(normal_pendulam_frame, from_=0 , to = 13 , state='readonly', textvariable=dscal)#Enter Title
+        escal.place(x=170, y=50, height=40, width=60)
         """frmcanvas = tk.Canvas(info_frame_Normal)#Canvas for frame
         frmcanvas.pack(side=LEFT,fill=BOTH)
         pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=frmcanvas.yview)#Description Box Scrollbar
         pendmainsb.pack(side='right', fill='both')
         pendmainsb['yscrollcommand'] = pendmainsb.set
         info_frame_Normal.bind("<Configure>", lambda e: frmcanvas.configure( scrollregion=frmcanvas.bbox("all")))"""
+        
+
         def switch():
                 global normal_switch_state
                                 
@@ -238,10 +245,10 @@ class Monster_Info():
                 ddef = tk.IntVar(info_frame_Normal)#Display DEF
                 hatk = tk.Label(info_frame_Normal, text="ATK", font=("SAO UI", 18))#Title Heading
                 hatk.place(x=400, y=435)
-                hdef = tk.Label(info_frame_Normal, text="DEF", font=("SAO UI", 18))#Title Heading
-                hdef.place(x=550, y=435)
                 eatk = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=datk)#Enter Title
                 eatk.place(x=450, y=430, height=40, width=60)
+                hdef = tk.Label(info_frame_Normal, text="DEF", font=("SAO UI", 18))#Title Heading
+                hdef.place(x=550, y=435)
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
                 edef.place(x=600, y=430, height=40, width=60)
                 normal_Pendulam()               
