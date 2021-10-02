@@ -1,46 +1,23 @@
-from tkinter import *
+import tkinter as tk
+from tkinter.ttk import *
 
-ws = Tk()
-ws.title('PythonGuides')
+root = tk.Tk()
+container = tk.Frame(root, bg='cyan')
+canvas = tk.Canvas(container, bg='darkcyan')
+scrollbar = tk.Scrollbar(container, orient="vertical", command=canvas.yview)
+scrollable_frame = tk.Frame(canvas,bg='red')
 
-frame = Frame(
-    ws,
-    width=500,
-    height=400
-    )
-frame.pack(expand=True, fill=BOTH)
+scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
-canvas=Canvas(
-    frame,
-    bg='#4A7A8C',
-    width=500,
-    height=400,
-    scrollregion=(0,0,700,700)
-    )
+canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 
-vertibar=Scrollbar(
-    frame,
-    orient=VERTICAL
-    )
-vertibar.pack(side=RIGHT,fill=Y)
-vertibar.config(command=canvas.yview)
+canvas.configure(yscrollcommand=scrollbar.set)
 
-horibar=Scrollbar(
-    frame,
-    orient=HORIZONTAL
-    )
-horibar.pack(side=BOTTOM,fill=X)
-horibar.config(command=canvas.xview)
+for i in range(50):
+    tk.Label(scrollable_frame, text="Sample scrolling label").pack()
 
-canvas.config(width=500,height=400)
+container.pack()
+canvas.pack(side="left", fill="both", expand=True)
+scrollbar.pack(side="right", fill="y")
 
-canvas.config(
-    xscrollcommand=horibar.set, 
-    yscrollcommand=vertibar.set
-    )
-canvas.pack(expand=True,side=LEFT,fill=BOTH)
-
-hdef = Label(canvas, text="DEF", font=("SAO UI", 18))#Title Heading
-hdef.place(x=1, y=1)
-
-ws.mainloop()
+root.mainloop()
