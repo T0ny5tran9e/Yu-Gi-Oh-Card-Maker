@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter.constants import BOTH, LEFT, SUNKEN
+from tkinter.constants import BOTH, BOTTOM, LEFT, RIGHT, SUNKEN, TOP, X, Y, YES
 from tkinter.ttk import * 
 from tkinter import filedialog
 from PIL import Image,ImageTk
@@ -19,24 +19,24 @@ info_frame_Normal.pack_propagate(0)
 info_canvas_Normal = tk.Canvas(info_frame_Normal)
 info_frame_scrollbar_Normal = tk.Scrollbar(info_frame_Normal, orient="vertical", command=info_canvas_Normal.yview)
 info_frame_scrollable_frame_Normal = tk.Frame(info_canvas_Normal)
-info_frame_scrollable_frame_Normal.bind("<Configure>", lambda e: info_canvas_Normal.configure(scrollregion=normal_pendulam_frame.bbox("all")))
-info_canvas_Normal.create_window((0, 0), window=info_frame_scrollable_frame_Normal, anchor="nw")
+info_frame_scrollable_frame_Normal.bind("<Configure>", lambda e: info_canvas_Normal.configure(scrollregion=info_frame_scrollable_frame_Normal.bbox(all)))
+info_canvas_Normal.create_window((0,0), window=info_frame_scrollable_frame_Normal, anchor="nw")
 info_canvas_Normal.configure(yscrollcommand=info_frame_scrollbar_Normal.set)
 #info_frame_Normal.pack()
 info_canvas_Normal.pack(side="left", fill="both", expand=True)
 info_frame_scrollbar_Normal.pack(side="right", fill="y")
 
-typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
+typfrm0 = tk.Frame(info_canvas_Normal)#0 Types Frame
 typfrm0.place(x=370,y=380,height=44,width=300)
-typfrm1 = tk.Frame(info_frame_Normal)#1 Types Frame
+typfrm1 = tk.Frame(info_canvas_Normal)#1 Types Frame
 typfrm1.place(x=370,y=380,height=44,width=300)
-typfrm2 = tk.Frame(info_frame_Normal)#2 Types Frame
+typfrm2 = tk.Frame(info_canvas_Normal)#2 Types Frame
 typfrm2.place(x=370,y=380,height=44,width=300)
-typfrm3 = tk.Frame(info_frame_Normal)#3 Types Frame
+typfrm3 = tk.Frame(info_canvas_Normal)#3 Types Frame
 typfrm3.place(x=370,y=380,height=44,width=300)
-typfrm4 = tk.Frame(info_frame_Normal)#4 Types Frame
+typfrm4 = tk.Frame(info_canvas_Normal)#4 Types Frame
 typfrm4.place(x=370,y=380,height=44,width=300)
-normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red', width=678)#0 Types Frame
+normal_pendulam_frame = tk.Frame(info_canvas_Normal, bg='red', width=678)#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
         bxsz = ['Large','Medium','Small']#Level List
@@ -73,10 +73,10 @@ def normal_Pendulam():
         offsz=offimg.resize((50,50))
         on=ImageTk.PhotoImage(onsz)
         off=ImageTk.PhotoImage(offsz)
-        hpend = Label(info_frame_Normal, text="Is this a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
+        hpend = Label(info_canvas_Normal, text="Is this a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
         hpend.place(x=10, y=435)
         # Create A Button
-        on_button = tk.Button(info_frame_Normal, image = off, bd = 0, command = switch)
+        on_button = tk.Button(info_canvas_Normal, image = off, bd = 0, command = switch)
         on_button.place(x=300,y=430)
 
 #3Effect Monster
@@ -138,57 +138,57 @@ class Monster_Info():
         def info_Normal_Monster():
                 info_frame_Normal.tkraise()
                 #Title
-                dtit = tk.StringVar(info_frame_Normal, value='Enter Title')#Display Title
-                htitle = tk.Label(info_frame_Normal, text="Title", font=("SAO UI", 18))#Title Heading
+                dtit = tk.StringVar(info_canvas_Normal, value='Enter Title')#Display Title
+                htitle = tk.Label(info_canvas_Normal, text="Title", font=("SAO UI", 18))#Title Heading
                 htitle.place(x=10, y=35)
-                etitle = tk.Entry(info_frame_Normal, textvariable=dtit)#Enter Title
+                etitle = tk.Entry(info_canvas_Normal, textvariable=dtit)#Enter Title
                 etitle.place(x=300, y=30, height=40, width=200)
                 #Card Attribute
                 attrilst = ['Select an Attribute', 'Dark', 'Divine', 'Earth', 'Fire', 'Light', 'Water', 'Wind']# Frame List
-                dat = tk.StringVar(info_frame_Normal)
+                dat = tk.StringVar(info_canvas_Normal)
                 dat.set(attrilst[0])
-                hattri = Label(info_frame_Normal, text="Card Frame", font=("SAO UI", 18))#Card Frame Heading
+                hattri = Label(info_canvas_Normal, text="Card Frame", font=("SAO UI", 18))#Card Frame Heading
                 hattri.place(x=10, y=85)
-                eattri = OptionMenu(info_frame_Normal, dat, *attrilst)#Card Frame Choice
+                eattri = OptionMenu(info_canvas_Normal, dat, *attrilst)#Card Frame Choice
                 eattri.place(x=300, y=80, height=40, width=200)
                 #Card Level
                 lvllst = ['Select Level Card', 'Level 00', 'Level 01', 'Level 02', 'Level 03', 'Level 04', 'Level 05', 'Level 06', 'Level 07', 'Level 08', 'Level 09', 'Level 10', 'Level 11', 'Level 12']#Level List
-                dlvl = tk.StringVar(info_frame_Normal)#Display Level
+                dlvl = tk.StringVar(info_canvas_Normal)#Display Level
                 dlvl.set(lvllst[0])
-                hlvl = Label(info_frame_Normal, text="Card Level", font=("SAO UI", 18))#Card Frame Heading
+                hlvl = Label(info_canvas_Normal, text="Card Level", font=("SAO UI", 18))#Card Frame Heading
                 hlvl.place(x=10, y=135)
-                elvl = OptionMenu(info_frame_Normal, dlvl, *lvllst)#Card Frame Choice
+                elvl = OptionMenu(info_canvas_Normal, dlvl, *lvllst)#Card Frame Choice
                 elvl.place(x=300, y=130, height=40, width=200)
                 #Button for Selecting Image
-                artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
+                artbrws = tk.Button(info_canvas_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
                 artbrws.place(x=100, y=180, height=40, width=500)
                 #Deck Code
-                ddcd = tk.StringVar(info_frame_Normal, value="Enter Code")#Display Deck Code
-                hdkcod = Label(info_frame_Normal, text="Card's Deck Code", font=("SAO UI", 18))#Deck Code Heading
+                ddcd = tk.StringVar(info_canvas_Normal, value="Enter Code")#Display Deck Code
+                hdkcod = Label(info_canvas_Normal, text="Card's Deck Code", font=("SAO UI", 18))#Deck Code Heading
                 hdkcod.place(x=10, y=235)
-                edkcod = tk.Entry(info_frame_Normal, textvariable=ddcd)#Enter Title
+                edkcod = tk.Entry(info_canvas_Normal, textvariable=ddcd)#Enter Title
                 edkcod.place(x=300, y=230, height=40, width=200)
                 #Card Description
-                hdscrbox = Label(info_frame_Normal, text="Card's Description", font=("SAO UI", 18))#Card Description Heading
+                hdscrbox = Label(info_canvas_Normal, text="Card's Description", font=("SAO UI", 18))#Card Description Heading
                 hdscrbox.place(x=10, y=300)
-                dscrbox = tk.Text(info_frame_Normal)#Description Box
+                dscrbox = tk.Text(info_canvas_Normal)#Description Box
                 dscrbox.place(x=300, y=280, height = 88, width = 200)
                 dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
                 dscrboxsb.pack(side='right', fill='both')
                 dscrbox['yscrollcommand'] = dscrboxsb.set
                 #Font Size
-                dtsz = tk.StringVar(info_frame_Normal, value="29")#Display Deck Code
-                htsz = Label(info_frame_Normal, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
+                dtsz = tk.StringVar(info_canvas_Normal, value="29")#Display Deck Code
+                htsz = Label(info_canvas_Normal, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
                 htsz.place(x=540, y=280)
-                etsz = tk.Spinbox(info_frame_Normal, from_=15 , to = 30, state = 'readonly', textvariable=dtsz)#Card Type Choice#Enter Title
+                etsz = tk.Spinbox(info_canvas_Normal, from_=15 , to = 30, state = 'readonly', textvariable=dtsz)#Card Type Choice#Enter Title
                 etsz.place(x=545, y=320, height=40, width=60)
                 #Types
-                dtypv = tk.StringVar(info_frame_Normal,"0 Type")
-                dtyp1 = tk.StringVar(info_frame_Normal, value="Type 1")#Display Type1
-                dtyp2 = tk.StringVar(info_frame_Normal, value="Type 2")#Display Type2
-                dtyp3 = tk.StringVar(info_frame_Normal, value="Type 3")#Display Type3
-                dtyp4 = tk.StringVar(info_frame_Normal, value="Type 4")#Display Type4
-                htyp = Label(info_frame_Normal, text="Card Type", font=("SAO UI", 18))#Type Heading
+                dtypv = tk.StringVar(info_canvas_Normal,"0 Type")
+                dtyp1 = tk.StringVar(info_canvas_Normal, value="Type 1")#Display Type1
+                dtyp2 = tk.StringVar(info_canvas_Normal, value="Type 2")#Display Type2
+                dtyp3 = tk.StringVar(info_canvas_Normal, value="Type 3")#Display Type3
+                dtyp4 = tk.StringVar(info_canvas_Normal, value="Type 4")#Display Type4
+                htyp = Label(info_canvas_Normal, text="Card Type", font=("SAO UI", 18))#Type Heading
                 htyp.place(x=10, y=385)
                 typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
                 etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#Enter Title
@@ -225,18 +225,18 @@ class Monster_Info():
                                 typfrm3.tkraise()
                         elif dtypvg == '4 Types':
                                 typfrm4.tkraise()
-                etyp = tk.Spinbox(info_frame_Normal, values=typlst, state = 'readonly', textvariable=dtypv,command=no_of_typs)#Card Type Choice
+                etyp = tk.Spinbox(info_canvas_Normal, values=typlst, state = 'readonly', textvariable=dtypv,command=no_of_typs)#Card Type Choice
                 etyp.place(x=300, y=380, height=40, width=60)
                 #ATK/DEF
-                datk = tk.IntVar(info_frame_Normal)#Display ATK
-                ddef = tk.IntVar(info_frame_Normal)#Display DEF
-                hatk = tk.Label(info_frame_Normal, text="ATK", font=("SAO UI", 18))#Title Heading
+                datk = tk.IntVar(info_canvas_Normal)#Display ATK
+                ddef = tk.IntVar(info_canvas_Normal)#Display DEF
+                hatk = tk.Label(info_canvas_Normal, text="ATK", font=("SAO UI", 18))#Title Heading
                 hatk.place(x=400, y=435)
-                hdef = tk.Label(info_frame_Normal, text="DEF", font=("SAO UI", 18))#Title Heading
+                hdef = tk.Label(info_canvas_Normal, text="DEF", font=("SAO UI", 18))#Title Heading
                 hdef.place(x=550, y=435)
-                eatk = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=datk)#Enter Title
+                eatk = tk.Spinbox(info_canvas_Normal, from_=0 , to = 9999, textvariable=datk)#Enter Title
                 eatk.place(x=450, y=430, height=40, width=60)
-                edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
+                edef = tk.Spinbox(info_canvas_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
                 edef.place(x=600, y=430, height=40, width=60)
                 normal_Pendulam()               
                 
