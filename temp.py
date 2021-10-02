@@ -7,8 +7,7 @@ canvas = tk.Canvas(container, bg='darkcyan')
 scrollbar = tk.Scrollbar(container, orient="vertical", command=canvas.yview)
 scrollable_frame = tk.Frame(canvas,bg='red')
 
-scrollable_frame.bind(
-    "<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
 canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 

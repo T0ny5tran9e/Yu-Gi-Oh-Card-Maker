@@ -16,6 +16,16 @@ info_frame_Normal = tk.Frame(ui, bg='darkcyan', width=678, height=650)#Main Fram
 info_frame_Normal.place(x=300,y=20)
 info_frame_Normal.pack_propagate(0)
 
+info_canvas_Normal = tk.Canvas(info_frame_Normal)
+info_frame_scrollbar_Normal = tk.Scrollbar(info_frame_Normal, orient="vertical", command=info_canvas_Normal.yview)
+info_frame_scrollable_frame_Normal = tk.Frame(info_canvas_Normal)
+info_frame_scrollable_frame_Normal.bind("<Configure>", lambda e: info_canvas_Normal.configure(scrollregion=normal_pendulam_frame.bbox("all")))
+info_canvas_Normal.create_window((0, 0), window=info_frame_scrollable_frame_Normal, anchor="nw")
+info_canvas_Normal.configure(yscrollcommand=info_frame_scrollbar_Normal.set)
+#info_frame_Normal.pack()
+info_canvas_Normal.pack(side="left", fill="both", expand=True)
+info_frame_scrollbar_Normal.pack(side="right", fill="y")
+
 typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
 typfrm0.place(x=370,y=380,height=44,width=300)
 typfrm1 = tk.Frame(info_frame_Normal)#1 Types Frame
@@ -36,12 +46,12 @@ def normal_Pendulam():
         hbxsz.place(x=10, y=15)
         ebxsz = tk.Spinbox(normal_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Card Frame Choice
         ebxsz.place(x=300, y=10, height=40, width=200)
-        frmcanvas = tk.Canvas(info_frame_Normal)#Canvas for frame
+        """frmcanvas = tk.Canvas(info_frame_Normal)#Canvas for frame
         frmcanvas.pack(side=LEFT,fill=BOTH)
         pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=frmcanvas.yview)#Description Box Scrollbar
         pendmainsb.pack(side='right', fill='both')
         pendmainsb['yscrollcommand'] = pendmainsb.set
-        info_frame_Normal.bind("<Configure>", lambda e: frmcanvas.configure( scrollregion=frmcanvas.bbox("all")))
+        info_frame_Normal.bind("<Configure>", lambda e: frmcanvas.configure( scrollregion=frmcanvas.bbox("all")))"""
         def switch():
                 global normal_switch_state
                                 
