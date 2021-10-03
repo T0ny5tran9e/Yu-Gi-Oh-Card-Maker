@@ -182,11 +182,11 @@ class Monster_Info():
                 elvl.place(x=100, y=130, height=40, width=60)
                 #Hologram
                 hololst = ['None', 'None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
-                dholo = tk.StringVar(info_frame_Normal)#Display Level
+                dholo = tk.StringVar(info_frame_Normal)#Display Hologram
                 dholo.set(hololst[0])
-                hholo = Label(info_frame_Normal, text="Hologram", font=("SAO UI", 18))#Card Frame Heading
+                hholo = Label(info_frame_Normal, text="Hologram", font=("SAO UI", 18))#Hologram Heading
                 hholo.place(x=170, y=135)
-                eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Card Frame Choice
+                eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Hologram Choice
                 eholo.place(x=280, y=130, height=40, width=80)
                 #Rarity
                 rarelst = ['Normal', 'Normal', 'Normal Rare', 'Super Rare', 'Ultra Rare', 'Secret Rare', 'Ultra Secret Rare', 'Gold Rare']#Rarity List
@@ -195,7 +195,7 @@ class Monster_Info():
                 hrare = Label(info_frame_Normal, text="Rarity", font=("SAO UI", 18))#Rarity Heading
                 hrare.place(x=370, y=135)
                 erare = OptionMenu(info_frame_Normal, drare, *rarelst)#Rarity Choice
-                erare.place(x=450, y=130, height=40, width=80)
+                erare.place(x=450, y=130, height=40, width=150)
                 #Button for Selecting Image
                 artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', font=myFont, command = browseIMG)
                 artbrws.place(x=100, y=180, height=40, width=500)
