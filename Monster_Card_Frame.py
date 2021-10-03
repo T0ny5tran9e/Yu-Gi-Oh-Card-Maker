@@ -9,10 +9,10 @@ ui = tk.Tk() #ui as User Interface
 monster_choice_frame=tk.Frame(ui,bg='white', width=280, height=585)
 monster_choice_frame.place(x=10,y=50)
 monster_choice_frame.pack_propagate(0)
-monster_choice_frame.config(borderwidth=3, relief=SUNKEN)
+monster_choice_frame.config(borderwidth=5, relief=SUNKEN)
 
 #2Normal Monster
-info_frame_Normal = tk.Frame(ui, width=678, height=700)#Main Frame
+info_frame_Normal = tk.Frame(ui, bg='darkcyan', width=678, height=700)#Main Frame
 info_frame_Normal.place(x=300,y=50)
 info_frame_Normal.pack_propagate(0)
 
@@ -140,9 +140,10 @@ info_frame_Trap = tk.Frame(ui, bg='darkcyan', width=678, height=585)
 info_frame_Trap.place(x=300,y=50)
 info_frame_Trap.pack_propagate(0)
 #13Temp Card Img View
-temp_card_img = tk.Frame(ui,bg='#505050' , width=350, height=485)
+temp_card_img = tk.Frame(ui, width=350, height=485)
 temp_card_img.place(x=999,y=50)
-temp_card_img.pack_propagate(0)  
+temp_card_img.pack_propagate(0) 
+temp_card_img.config(borderwidth=5, relief=SUNKEN) 
  
 #Browse Image for card Artwork
 def browseIMG():
@@ -177,6 +178,22 @@ class Monster_Info():
                 hlvl.place(x=10, y=135)
                 elvl = tk.Spinbox(info_frame_Normal, from_= 0 , to = 12, textvariable=dlvl)#Enter Title
                 elvl.place(x=100, y=130, height=40, width=60)
+                #Hologram
+                hololst = ['None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
+                dholo = tk.StringVar(info_frame_Normal)#Display Level
+                dholo.set(hololst[0])
+                hholo = Label(info_frame_Normal, text="Hologram", font=("SAO UI", 18))#Card Frame Heading
+                hholo.place(x=170, y=135)
+                eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Card Frame Choice
+                eholo.place(x=280, y=130, height=40, width=80)
+                """#Rarity
+                hololst = ['None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
+                dholo = tk.StringVar(info_frame_Normal)#Display Level
+                dholo.set(hololst[0])
+                hholo = Label(info_frame_Normal, text="Hologram", font=("SAO UI", 18))#Card Frame Heading
+                hholo.place(x=170, y=135)
+                eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Card Frame Choice
+                eholo.place(x=280, y=130, height=40, width=80)"""
                 #Button for Selecting Image
                 artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
                 artbrws.place(x=100, y=180, height=40, width=500)
@@ -259,7 +276,7 @@ class Monster_Info():
                 normal_Pendulam()
                 #Serial ID
                 did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
-                hid = tk.Label(info_frame_Normal, text="Title", font=("SAO UI", 18))#Title Heading
+                hid = tk.Label(info_frame_Normal, text="Card ID", font=("SAO UI", 18))#Title Heading
                 hid.place(x=10, y=35)
                 eid = tk.Entry(info_frame_Normal, textvariable=dtit)#Enter Title
                 eid.place(x=300, y=30, height=40, width=100)
