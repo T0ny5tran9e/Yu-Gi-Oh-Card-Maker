@@ -13,7 +13,7 @@ monster_choice_frame.config(borderwidth=3, relief=SUNKEN)
 
 #2Normal Monster
 info_frame_Normal = tk.Frame(ui, width=678, height=700)#Main Frame
-info_frame_Normal.place(x=300,y=5)
+info_frame_Normal.place(x=300,y=50)
 info_frame_Normal.pack_propagate(0)
 
 typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
@@ -59,20 +59,27 @@ def normal_Pendulam():
         #Serial ID
         did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
         hid = tk.Label(info_frame_Normal, text="Title", font=("SAO UI", 18))#Title Heading
+        hid.place(x=10, y=485)
         eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
-      
+        eid.place(x=300, y=480, height=40, width=100)
         def switch():
                 global normal_switch_state
                                 
                 # Determin is on or off
                 if normal_switch_state:
+                        info_frame_Normal.place_forget
+                        info_frame_Normal.place(x=300,y=50)
                         on_button.config(image = off)
                         normal_pendulam_frame.place_forget()
+                        hid.place_forget()
+                        eid.place_forget()
                         hid.place(x=10, y=485)
                         eid.place(x=300, y=480, height=40, width=100)
                         normal_switch_state = False
                                                                 
                 else:
+                        info_frame_Normal.place_forget
+                        info_frame_Normal.place(x=300,y=5)
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
                         hid.place(x=10, y=635)
