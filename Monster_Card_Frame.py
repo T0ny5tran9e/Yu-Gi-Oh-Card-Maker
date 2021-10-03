@@ -277,15 +277,15 @@ class Monster_Info():
                 edef.place(x=600, y=430, height=40, width=60)
                 normal_Pendulam()
                 #Serial ID
-                did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
-                hid = tk.Label(info_frame_Normal, text="Card ID", font=("SAO UI", 18))#Title Heading
+                did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Serial ID
+                hid = tk.Label(info_frame_Normal, text="Card ID", font=("SAO UI", 18))#Serial ID Heading
                 hid.place(x=10, y=35)
-                eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
+                eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Serial ID
                 eid.place(x=300, y=30, height=40, width=100)
                 #Generate Button
                 normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
                 normgen.place(x=1100, y=550, height=40, width=100)
-                #Generate Button
+                #Save Button
                 normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
                 normsave.place(x=1200, y=550, height=40, width=100)
                                 
