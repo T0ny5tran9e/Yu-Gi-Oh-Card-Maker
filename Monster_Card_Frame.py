@@ -14,10 +14,9 @@ monster_choice_frame.pack_propagate(0)
 monster_choice_frame.config(borderwidth=5, relief=SUNKEN)
 
 #2Normal Monster
-info_frame_Normal = tk.Frame(ui, bg='darkcyan', width=678, height=700)#Main Frame
+info_frame_Normal = tk.Frame(ui, width=678, height=700)#Main Frame
 info_frame_Normal.place(x=300,y=50)
 info_frame_Normal.pack_propagate(0)
-
 typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
 typfrm0.place(x=370,y=380,height=44,width=300)
 typfrm1 = tk.Frame(info_frame_Normal)#1 Types Frame
@@ -28,7 +27,7 @@ typfrm3 = tk.Frame(info_frame_Normal)#3 Types Frame
 typfrm3.place(x=370,y=380,height=44,width=300)
 typfrm4 = tk.Frame(info_frame_Normal)#4 Types Frame
 typfrm4.place(x=370,y=380,height=44,width=300)
-normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red', width=678)#0 Types Frame
+normal_pendulam_frame = tk.Frame(info_frame_Normal, width=678)#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
         #Pendulam Box Size
@@ -39,28 +38,29 @@ def normal_Pendulam():
         hbxsz.place(x=10, y=5)
         ebxsz = tk.Spinbox(normal_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Pendulam Box Size Choice
         ebxsz.place(x=10, y=50, height=40, width=60)
+        #Pendulam Scale
         dscal = tk.IntVar(info_frame_Normal)#Display Pendulam Scale
-        hscal = tk.Label(normal_pendulam_frame, text="Pendulam Scale", font=("SAO UI", 18))#Title Heading
+        hscal = tk.Label(normal_pendulam_frame, text="Pendulam Scale", font=("SAO UI", 18))#Pendulam Scale Heading
         hscal.place(x=170, y=5)
-        escal = tk.Spinbox(normal_pendulam_frame, from_=0 , to = 13 , state='readonly', textvariable=dscal)#Enter Title
+        escal = tk.Spinbox(normal_pendulam_frame, from_=0 , to = 13 , state='readonly', textvariable=dscal)#Enter Pendulam Scale
         escal.place(x=170, y=50, height=40, width=60)
         #Effect Font Size
-        defsz = tk.StringVar(normal_pendulam_frame, value="29")#Display Deck Code
-        hefsz = Label(normal_pendulam_frame, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
+        defsz = tk.StringVar(normal_pendulam_frame, value="29")#Display Effect Font Size
+        hefsz = Label(normal_pendulam_frame, text="Font Size", font=("SAO UI", 18))#Effect Font Size Heading
         hefsz.place(x=310, y=5)
-        eefsz = tk.Spinbox(normal_pendulam_frame, from_=15 , to = 30, state = 'readonly', textvariable=defsz)#Card Type Choice#Enter Title
+        eefsz = tk.Spinbox(normal_pendulam_frame, from_=15 , to = 30, state = 'readonly', textvariable=defsz)#Effect Font Size Choice
         eefsz.place(x=310, y=50, height=40, width=60)
-        #Card Description
-        hdscrbox = Label(normal_pendulam_frame, text="Card's Description", font=("SAO UI", 18))#Card Description Heading
+        #Card Effect
+        hdscrbox = Label(normal_pendulam_frame, text="Card's Description", font=("SAO UI", 18))#Card Effect Heading
         hdscrbox.place(x=400, y=5)
-        dscrbox = tk.Text(normal_pendulam_frame)#Description Box
+        dscrbox = tk.Text(normal_pendulam_frame)#Card Effect Box
         dscrbox.place(x=400, y=50, height = 88, width = 200)
-        dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
+        dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Card Effect Box Scrollbar
         dscrboxsb.pack(side='right', fill='both')
         dscrbox['yscrollcommand'] = dscrboxsb.set
         #Serial ID
-        did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
-        hid = tk.Label(info_frame_Normal, text="Title", font=("SAO UI", 18))#Title Heading
+        did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Serial ID
+        hid = tk.Label(info_frame_Normal, text="Serial ID", font=("SAO UI", 18))#Serial ID Heading
         hid.place(x=10, y=485)
         eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
         eid.place(x=300, y=480, height=40, width=100)
@@ -276,12 +276,6 @@ class Monster_Info():
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter DEF
                 edef.place(x=600, y=430, height=40, width=60)
                 normal_Pendulam()
-                #Serial ID
-                did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Serial ID
-                hid = tk.Label(info_frame_Normal, text="Card ID", font=("SAO UI", 18))#Serial ID Heading
-                hid.place(x=10, y=35)
-                eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Serial ID
-                eid.place(x=300, y=30, height=40, width=100)
                 #Generate Button
                 normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
                 normgen.place(x=1100, y=550, height=40, width=100)
