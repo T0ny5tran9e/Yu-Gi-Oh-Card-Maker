@@ -45,7 +45,8 @@ typfrm4.place(x=370,y=380,height=44,width=300)
 normal_pendulam_frame = tk.Frame(info_frame_Normal, bg='red', width=678)#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
-        bxsz = ['Large','Medium','Small']#Level List
+        #Pendulam Box Size
+        bxsz = ['Large','Medium','Small']#Size List
         dbxsz = tk.StringVar(normal_pendulam_frame)#Display Pendulam Box Size
         dbxsz.set(bxsz[0])
         hbxsz = Label(normal_pendulam_frame, text="Pendulam Box Size", font=("SAO UI", 18))#Pendulam Box Size Heading
@@ -57,6 +58,20 @@ def normal_Pendulam():
         hscal.place(x=170, y=5)
         escal = tk.Spinbox(normal_pendulam_frame, from_=0 , to = 13 , state='readonly', textvariable=dscal)#Enter Title
         escal.place(x=170, y=50, height=40, width=60)
+        #Effect Font Size
+        defsz = tk.StringVar(normal_pendulam_frame, value="29")#Display Deck Code
+        hefsz = Label(normal_pendulam_frame, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
+        hefsz.place(x=310, y=5)
+        eefsz = tk.Spinbox(normal_pendulam_frame, from_=15 , to = 30, state = 'readonly', textvariable=defsz)#Card Type Choice#Enter Title
+        eefsz.place(x=310, y=50, height=40, width=60)
+        #Card Description
+        hdscrbox = Label(normal_pendulam_frame, text="Card's Description", font=("SAO UI", 18))#Card Description Heading
+        hdscrbox.place(x=400, y=5)
+        dscrbox = tk.Text(normal_pendulam_frame)#Description Box
+        dscrbox.place(x=400, y=50, height = 88, width = 200)
+        dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
+        dscrboxsb.pack(side='right', fill='both')
+        dscrbox['yscrollcommand'] = dscrboxsb.set
         """frmcanvas = tk.Canvas(info_frame_Normal)#Canvas for frame
         frmcanvas.pack(side=LEFT,fill=BOTH)
         pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=frmcanvas.yview)#Description Box Scrollbar
@@ -76,7 +91,7 @@ def normal_Pendulam():
                                                                 
                 else:
                         on_button.config(image = on)
-                        normal_pendulam_frame.place(x=0,y=480,height=600)
+                        normal_pendulam_frame.place(x=0,y=480,height=145)
                         normal_switch_state = True
                                             
         #Define Our Images
@@ -134,7 +149,7 @@ info_frame_Trap.place(x=300,y=50)
 info_frame_Trap.pack_propagate(0)
 #13Temp Card Img View
 temp_card_img = tk.Frame(ui,bg='#505050' , width=350, height=485)
-temp_card_img.place(x=999,y=100)
+temp_card_img.place(x=999,y=50)
 temp_card_img.pack_propagate(0)  
  
 #Browse Image for card Artwork
@@ -204,25 +219,25 @@ class Monster_Info():
                 htyp = Label(info_frame_Normal, text="Card Type", font=("SAO UI", 18))#Type Heading
                 htyp.place(x=10, y=385)
                 typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
-                etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#Enter Title
+                etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#1 Type 1
                 etyp1_1.place(x=00, y=1, height=40, width=50)
-                etyp2_1 = tk.Entry(typfrm2, textvariable=dtyp1)#Enter Title
+                etyp2_1 = tk.Entry(typfrm2, textvariable=dtyp1)#2 Type 1
                 etyp2_1.place(x=00, y=1, height=40, width=50)
-                etyp2_2 = tk.Entry(typfrm2, textvariable=dtyp2)#Enter Title
+                etyp2_2 = tk.Entry(typfrm2, textvariable=dtyp2)#2 Type 2
                 etyp2_2.place(x=60, y=1, height=40, width=50)
-                etyp3_1 = tk.Entry(typfrm3, textvariable=dtyp1)#Enter Title
+                etyp3_1 = tk.Entry(typfrm3, textvariable=dtyp1)#3 Type 1
                 etyp3_1.place(x=0, y=1, height=40, width=50)
-                etyp3_2 = tk.Entry(typfrm3, textvariable=dtyp2)#Enter Title
+                etyp3_2 = tk.Entry(typfrm3, textvariable=dtyp2)#3 Type 2
                 etyp3_2.place(x=60, y=1, height=40, width=50)
-                etyp3_3 = tk.Entry(typfrm3, textvariable=dtyp3)#Enter Title
+                etyp3_3 = tk.Entry(typfrm3, textvariable=dtyp3)#3 Type 3
                 etyp3_3.place(x=120, y=1, height=40, width=50)
-                etyp4_1 = tk.Entry(typfrm4, textvariable=dtyp1)#Enter Title
+                etyp4_1 = tk.Entry(typfrm4, textvariable=dtyp1)#4 Type 1
                 etyp4_1.place(x=00, y=1, height=40, width=50)
-                etyp4_2 = tk.Entry(typfrm4, textvariable=dtyp2)#Enter Title
+                etyp4_2 = tk.Entry(typfrm4, textvariable=dtyp2)#4 Type 2
                 etyp4_2.place(x=60, y=1, height=40, width=50)
-                etyp4_3 = tk.Entry(typfrm4, textvariable=dtyp3)#Enter Title
+                etyp4_3 = tk.Entry(typfrm4, textvariable=dtyp3)#4 Type 3
                 etyp4_3.place(x=120, y=1, height=40, width=50)
-                etyp4_4 = tk.Entry(typfrm4, textvariable=dtyp4)#Enter Title
+                etyp4_4 = tk.Entry(typfrm4, textvariable=dtyp4)#4 Type 4
                 etyp4_4.place(x=180, y=1, height=40, width=50)
                 #No of Types
                 typfrm0.tkraise()        
