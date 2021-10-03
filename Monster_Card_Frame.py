@@ -265,20 +265,20 @@ class Monster_Info():
                 #ATK/DEF
                 datk = tk.IntVar(info_frame_Normal)#Display ATK
                 ddef = tk.IntVar(info_frame_Normal)#Display DEF
-                hatk = tk.Label(info_frame_Normal, text="ATK", font=("SAO UI", 18))#Title Heading
+                hatk = tk.Label(info_frame_Normal, text="ATK", font=("SAO UI", 18))#ATK Heading
                 hatk.place(x=400, y=435)
-                eatk = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=datk)#Enter Title
+                eatk = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=datk)#Enter ATK
                 eatk.place(x=450, y=430, height=40, width=60)
-                hdef = tk.Label(info_frame_Normal, text="DEF", font=("SAO UI", 18))#Title Heading
+                hdef = tk.Label(info_frame_Normal, text="DEF", font=("SAO UI", 18))#DEF Heading
                 hdef.place(x=550, y=435)
-                edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
+                edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter DEF
                 edef.place(x=600, y=430, height=40, width=60)
                 normal_Pendulam()
                 #Serial ID
                 did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
                 hid = tk.Label(info_frame_Normal, text="Card ID", font=("SAO UI", 18))#Title Heading
                 hid.place(x=10, y=35)
-                eid = tk.Entry(info_frame_Normal, textvariable=dtit)#Enter Title
+                eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
                 eid.place(x=300, y=30, height=40, width=100)
                 
                                 
