@@ -179,21 +179,21 @@ class Monster_Info():
                 elvl = tk.Spinbox(info_frame_Normal, from_= 0 , to = 12, textvariable=dlvl)#Enter Title
                 elvl.place(x=100, y=130, height=40, width=60)
                 #Hologram
-                hololst = ['None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
+                hololst = ['None', 'None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
                 dholo = tk.StringVar(info_frame_Normal)#Display Level
                 dholo.set(hololst[0])
                 hholo = Label(info_frame_Normal, text="Hologram", font=("SAO UI", 18))#Card Frame Heading
                 hholo.place(x=170, y=135)
                 eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Card Frame Choice
                 eholo.place(x=280, y=130, height=40, width=80)
-                """#Rarity
-                hololst = ['None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
-                dholo = tk.StringVar(info_frame_Normal)#Display Level
-                dholo.set(hololst[0])
-                hholo = Label(info_frame_Normal, text="Hologram", font=("SAO UI", 18))#Card Frame Heading
-                hholo.place(x=170, y=135)
-                eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Card Frame Choice
-                eholo.place(x=280, y=130, height=40, width=80)"""
+                #Rarity
+                rarelst = ['Normal', 'Normal', 'Normal Rare', 'Super Rare', 'Ultra Rare', 'Secret Rare', 'Ultra Secret Rare', 'Gold Rare']#Level List
+                drare = tk.StringVar(info_frame_Normal)#Display Level
+                drare.set(rarelst[0])
+                hrare = Label(info_frame_Normal, text="Rarity", font=("SAO UI", 18))#Card Frame Heading
+                hrare.place(x=370, y=135)
+                erare = OptionMenu(info_frame_Normal, drare, *rarelst)#Card Frame Choice
+                erare.place(x=450, y=130, height=40, width=80)
                 #Button for Selecting Image
                 artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
                 artbrws.place(x=100, y=180, height=40, width=500)
