@@ -12,25 +12,9 @@ monster_choice_frame.pack_propagate(0)
 monster_choice_frame.config(borderwidth=3, relief=SUNKEN)
 
 #2Normal Monster
-info_frame_Normal = tk.Frame(ui, bg='darkcyan', width=678, height=700)#Main Frame
+info_frame_Normal = tk.Frame(ui, width=678, height=700)#Main Frame
 info_frame_Normal.place(x=300,y=5)
 info_frame_Normal.pack_propagate(0)
-
-"""info_canvas_Normal = tk.Canvas(info_frame_Normal)
-info_frame_scrollbar_Normal = tk.Scrollbar(info_frame_Normal, orient="vertical", command=info_canvas_Normal.yview)
-info_frame_scrollable_frame_Normal = tk.Frame(info_canvas_Normal)
-info_frame_scrollable_frame_Normal.bind("<Configure>", lambda e: info_canvas_Normal.configure(scrollregion=info_frame_scrollable_frame_Normal.bbox(all)))
-info_canvas_Normal.create_window((0,0), window=info_frame_scrollable_frame_Normal, anchor="nw")
-info_canvas_Normal.configure(yscrollcommand=info_frame_scrollbar_Normal.set)
-#info_frame_Normal.pack()
-info_canvas_Normal.pack(side="left", fill="both", expand=True)
-info_frame_scrollbar_Normal.pack(side="right", fill="y")
-
-info_canvas_Normal = tk.Canvas(info_frame_Normal)
-pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=info_canvas_Normal.yview)#Description Box Scrollbar
-pendmainsb.pack(side='right', fill='both')
-info_canvas_Normal['yscrollcommand'] = pendmainsb.set
-info_canvas_Normal.pack(side="left", fill="both", expand=True)"""
 
 typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
 typfrm0.place(x=370,y=380,height=44,width=300)
@@ -72,14 +56,11 @@ def normal_Pendulam():
         dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
         dscrboxsb.pack(side='right', fill='both')
         dscrbox['yscrollcommand'] = dscrboxsb.set
-        """frmcanvas = tk.Canvas(info_frame_Normal)#Canvas for frame
-        frmcanvas.pack(side=LEFT,fill=BOTH)
-        pendmainsb = tk.Scrollbar(info_frame_Normal,orient='vertical', command=frmcanvas.yview)#Description Box Scrollbar
-        pendmainsb.pack(side='right', fill='both')
-        pendmainsb['yscrollcommand'] = pendmainsb.set
-        info_frame_Normal.bind("<Configure>", lambda e: frmcanvas.configure( scrollregion=frmcanvas.bbox("all")))"""
-        
-
+        #Serial ID
+        did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
+        hid = tk.Label(info_frame_Normal, text="Title", font=("SAO UI", 18))#Title Heading
+        eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
+      
         def switch():
                 global normal_switch_state
                                 
@@ -87,18 +68,22 @@ def normal_Pendulam():
                 if normal_switch_state:
                         on_button.config(image = off)
                         normal_pendulam_frame.place_forget()
+                        hid.place(x=10, y=485)
+                        eid.place(x=300, y=480, height=40, width=100)
                         normal_switch_state = False
                                                                 
                 else:
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
+                        hid.place(x=10, y=635)
+                        eid.place(x=300, y=630, height=40, width=100)
                         normal_switch_state = True
                                             
         #Define Our Images
         onimg = Image.open("src\On.png")
         offimg = Image.open("src\Off.png") 
-        onsz=onimg.resize((50,50))
-        offsz=offimg.resize((50,50))
+        onsz=onimg.resize((40,40))
+        offsz=offimg.resize((40,40))
         on=ImageTk.PhotoImage(onsz)
         off=ImageTk.PhotoImage(offsz)
         hpend = Label(info_frame_Normal, text="Is this a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
@@ -266,7 +251,13 @@ class Monster_Info():
                 hdef.place(x=550, y=435)
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter Title
                 edef.place(x=600, y=430, height=40, width=60)
-                normal_Pendulam()               
+                normal_Pendulam()
+                #Serial ID
+                did = tk.StringVar(info_frame_Normal, value='Enter Card ID')#Display Title
+                hid = tk.Label(info_frame_Normal, text="Title", font=("SAO UI", 18))#Title Heading
+                hid.place(x=10, y=35)
+                eid = tk.Entry(info_frame_Normal, textvariable=dtit)#Enter Title
+                eid.place(x=300, y=30, height=40, width=100)
                 
                                 
         def info_Effect_Monster():
