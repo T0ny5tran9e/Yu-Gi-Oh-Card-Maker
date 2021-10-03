@@ -1,1 +1,1 @@
-Monster_Card_Frame
+height=40, width=200
