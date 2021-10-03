@@ -1,5 +1,5 @@
 import tkinter as tk
-import tkinter.font as font
+#import tkinter.font as font
 from tkinter.ttk import * 
 from Monster_Card_Frame import *
 
@@ -9,7 +9,7 @@ screenheight= ui.winfo_screenheight()
 ui.geometry("%dx%d" % (screenwidth, screenheight))#UI full size M2
 ui.resizable(False,False)
 
-myFont = font.Font(family='SAO UI')
+#myFont = font.Font(family='SAO UI')
 
 df = tk.StringVar(ui,"0")
 #Monster Card Choice

@@ -1,9 +1,11 @@
 import tkinter as tk
 from tkinter.constants import BOTH, BOTTOM, LEFT, RIGHT, SUNKEN, TOP, X, Y, YES
+import tkinter.font as font
 from tkinter.ttk import * 
 from tkinter import filedialog
 from PIL import Image,ImageTk
 ui = tk.Tk() #ui as User Interface
+myFont = font.Font(family='SAO UI')
 #Monster Card Frame
 #1Card Frame choice
 monster_choice_frame=tk.Frame(ui,bg='white', width=280, height=585)
@@ -195,7 +197,7 @@ class Monster_Info():
                 erare = OptionMenu(info_frame_Normal, drare, *rarelst)#Rarity Choice
                 erare.place(x=450, y=130, height=40, width=80)
                 #Button for Selecting Image
-                artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
+                artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', font=myFont, command = browseIMG)
                 artbrws.place(x=100, y=180, height=40, width=500)
                 #Deck Code
                 ddcd = tk.StringVar(info_frame_Normal, value="Enter Code")#Display Deck Code
@@ -280,7 +282,9 @@ class Monster_Info():
                 hid.place(x=10, y=35)
                 eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
                 eid.place(x=300, y=30, height=40, width=100)
-                
+                #Generate Button
+                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
+                normgen.place(x=999, y=550)
                                 
         def info_Effect_Monster():
                 info_frame_Effect.tkraise()
