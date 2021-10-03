@@ -172,13 +172,11 @@ class Monster_Info():
                 eattri = OptionMenu(info_frame_Normal, dat, *attrilst)#Card Frame Choice
                 eattri.place(x=300, y=80, height=40, width=200)
                 #Card Level
-                lvllst = ['Select Level Card', 'Level 00', 'Level 01', 'Level 02', 'Level 03', 'Level 04', 'Level 05', 'Level 06', 'Level 07', 'Level 08', 'Level 09', 'Level 10', 'Level 11', 'Level 12']#Level List
-                dlvl = tk.StringVar(info_frame_Normal)#Display Level
-                dlvl.set(lvllst[0])
-                hlvl = Label(info_frame_Normal, text="Card Level", font=("SAO UI", 18))#Card Frame Heading
+                dlvl = tk.IntVar(info_frame_Normal)#Display DEF
+                hlvl = tk.Label(info_frame_Normal, text="Level", font=("SAO UI", 18))#Title Heading
                 hlvl.place(x=10, y=135)
-                elvl = OptionMenu(info_frame_Normal, dlvl, *lvllst)#Card Frame Choice
-                elvl.place(x=300, y=130, height=40, width=200)
+                elvl = tk.Spinbox(info_frame_Normal, from_= 0 , to = 12, textvariable=dlvl)#Enter Title
+                elvl.place(x=100, y=130, height=40, width=60)
                 #Button for Selecting Image
                 artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
                 artbrws.place(x=100, y=180, height=40, width=500)
