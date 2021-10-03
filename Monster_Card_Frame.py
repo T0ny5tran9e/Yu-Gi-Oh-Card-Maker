@@ -284,7 +284,10 @@ class Monster_Info():
                 eid.place(x=300, y=30, height=40, width=100)
                 #Generate Button
                 normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
-                normgen.place(x=999, y=550)
+                normgen.place(x=1050, y=550)
+                #Generate Button
+                normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
+                normsave.place(x=1150, y=550)
                                 
         def info_Effect_Monster():
                 info_frame_Effect.tkraise()
