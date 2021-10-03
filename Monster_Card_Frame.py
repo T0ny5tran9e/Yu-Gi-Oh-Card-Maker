@@ -187,12 +187,12 @@ class Monster_Info():
                 eholo = OptionMenu(info_frame_Normal, dholo, *hololst)#Card Frame Choice
                 eholo.place(x=280, y=130, height=40, width=80)
                 #Rarity
-                rarelst = ['Normal', 'Normal', 'Normal Rare', 'Super Rare', 'Ultra Rare', 'Secret Rare', 'Ultra Secret Rare', 'Gold Rare']#Level List
-                drare = tk.StringVar(info_frame_Normal)#Display Level
+                rarelst = ['Normal', 'Normal', 'Normal Rare', 'Super Rare', 'Ultra Rare', 'Secret Rare', 'Ultra Secret Rare', 'Gold Rare']#Rarity List
+                drare = tk.StringVar(info_frame_Normal)#Display Rarity
                 drare.set(rarelst[0])
-                hrare = Label(info_frame_Normal, text="Rarity", font=("SAO UI", 18))#Card Frame Heading
+                hrare = Label(info_frame_Normal, text="Rarity", font=("SAO UI", 18))#Rarity Heading
                 hrare.place(x=370, y=135)
-                erare = OptionMenu(info_frame_Normal, drare, *rarelst)#Card Frame Choice
+                erare = OptionMenu(info_frame_Normal, drare, *rarelst)#Rarity Choice
                 erare.place(x=450, y=130, height=40, width=80)
                 #Button for Selecting Image
                 artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', command = browseIMG)
