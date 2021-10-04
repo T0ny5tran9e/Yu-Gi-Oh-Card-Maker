@@ -63,7 +63,21 @@ def normal_Pendulam():
         hid = tk.Label(info_frame_Normal, text="Serial ID", font=("SAO UI", 18))#Serial ID Heading
         hid.place(x=10, y=485)
         eid = tk.Entry(info_frame_Normal, textvariable=did)#Enter Title
-        eid.place(x=300, y=480, height=40, width=100)
+        eid.place(x=10, y=520, height=40, width=100)
+        #Edition
+        edilst = ['None', 'None', '1st Edition', 'Limited Edition', 'Anime Edition', 'Duel Terminal']# Frame List
+        dedi = tk.StringVar(info_frame_Normal)
+        dedi.set(edilst[0])
+        hedi = Label(info_frame_Normal, text="Card Edition", font=("SAO UI", 18))#Card Frame Heading
+        hedi.place(x=210, y=485)
+        eedi = OptionMenu(info_frame_Normal, dedi, *edilst)#Card Frame Choice
+        eedi.place(x=210, y=520, height=40, width=100)
+        #Copyright
+        dcprt = tk.StringVar(info_frame_Normal, value='©1996 KAZUKI TAKAHASHI')#Display Title
+        hcprt = tk.Label(info_frame_Normal, text="Copyright", font=("SAO UI", 18))#Title Heading
+        hcprt.place(x=400, y=485)
+        ecprt = tk.Entry(info_frame_Normal, textvariable=dcprt)#Enter Title
+        ecprt.place(x=400, y=520, height=40, width=200)
         def switch():
                 global normal_switch_state
                                 
@@ -78,16 +92,28 @@ def normal_Pendulam():
                         eid.place_forget()
                         #Update Previous Normal Monster ID if Exist
                         hid.place(x=10, y=485)
-                        eid.place(x=300, y=480, height=40, width=100)
+                        eid.place(x=10, y=520, height=40, width=100)
+                        hedi.place_forget()
+                        eedi.place_forget()
+                        hedi.place(x=210, y=485)
+                        eedi.place(x=210, y=520, height=40, width=100)
+                        hcprt.place_forget
+                        ecprt.place_forget
+                        hcprt.place(x=400, y=485)
+                        ecprt.place(x=400, y=520, height=40, width=200)
                         normal_switch_state = False
                                                                 
                 else:
                         info_frame_Normal.place_forget#Forget Previous Normal Monster Frame if Exist
-                        info_frame_Normal.place(x=300,y=5)#Update new Normal Monster Frame
+                        info_frame_Normal.place(x=300,y=1)#Update new Normal Monster Frame
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
-                        hid.place(x=10, y=635)
-                        eid.place(x=300, y=630, height=40, width=100)
+                        hid.place(x=10, y=655)
+                        eid.place(x=10, y=660, height=40, width=100)
+                        hedi.place(x=210, y=625)
+                        eedi.place(x=210, y=660, height=40, width=100)
+                        hcprt.place(x=400, y=625)
+                        ecprt.place(x=400, y=660, height=40, width=200)
                         normal_switch_state = True
                                             
         #Define Our Images
@@ -104,7 +130,7 @@ def normal_Pendulam():
         on_button.place(x=300,y=430)
 
 #3Effect Monster
-info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=700)
+info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=585)
 info_frame_Effect.place(x=300,y=50)
 info_frame_Effect.pack_propagate(0)
 efftypfrm0 = tk.Frame(info_frame_Effect)#0 Types Frame
@@ -192,6 +218,7 @@ def Effect_Pendulam():
         # Create A Button
         on_button = tk.Button(info_frame_Effect, image = off, bd = 0, command = switch)
         on_button.place(x=300,y=430)
+        
 #4Ritual Monster
 info_frame_Ritual = tk.Frame(ui, bg='darkcyan', width=678, height=585)
 info_frame_Ritual.place(x=300,y=50)
