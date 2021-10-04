@@ -31,7 +31,7 @@ normal_pendulam_frame = tk.Frame(info_frame_Normal, width=678)#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
         #Pendulam Box Size
-        bxsz = ['Large','Medium','Small']#Size List
+        bxsz = ['Large','Medium','Small']#Pendulam Box Size List
         dbxsz = tk.StringVar(normal_pendulam_frame)#Display Pendulam Box Size
         dbxsz.set(bxsz[0])
         hbxsz = Label(normal_pendulam_frame, text="Pendulam Box Size", font=("SAO UI", 18))#Pendulam Box Size Heading
@@ -69,10 +69,11 @@ def normal_Pendulam():
                                 
                 # Determin is on or off
                 if normal_switch_state:
-                        info_frame_Normal.place_forget
-                        info_frame_Normal.place(x=300,y=50)
+                        info_frame_Normal.place_forget#Forget Previous Normal Monster Frame if Exist
+                        info_frame_Normal.place(x=300,y=50)#Update new Normal Monster Frame
                         on_button.config(image = off)
-                        normal_pendulam_frame.place_forget()
+                        normal_pendulam_frame.place_forget()#Forget Previous Normal Monster Pendulam Frame if Exist
+                        #Forget Previous Normal Monster ID if Exist
                         hid.place_forget()
                         eid.place_forget()
                         hid.place(x=10, y=485)
