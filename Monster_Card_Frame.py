@@ -104,7 +104,7 @@ def normal_Pendulam():
         on_button.place(x=300,y=430)
 
 #3Effect Monster
-info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=585)
+info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=700)
 info_frame_Effect.place(x=300,y=50)
 info_frame_Effect.pack_propagate(0)
 efftypfrm0 = tk.Frame(info_frame_Effect)#0 Types Frame
@@ -118,8 +118,8 @@ efftypfrm3.place(x=370,y=380,height=44,width=300)
 efftypfrm4 = tk.Frame(info_frame_Effect)#4 Types Frame
 efftypfrm4.place(x=370,y=380,height=44,width=300)
 effect_pendulam_frame = tk.Frame(info_frame_Effect, width=678)#0 Types Frame
-effect_pendulam_frame = False#True=on False=off
-def effect_Pendulam():
+effect_switch_state = False#True=on False=off
+def Effect_Pendulam():
         #Pendulam Box Size
         bxsz = ['Large','Medium','Small']#Pendulam Box Size List
         dbxsz = tk.StringVar(effect_pendulam_frame)#Display Pendulam Box Size
@@ -178,7 +178,7 @@ def effect_Pendulam():
                         effect_pendulam_frame.place(x=0,y=480,height=145)
                         hid.place(x=10, y=635)
                         eid.place(x=300, y=630, height=40, width=100)
-                        Effect_switch_state = True
+                        effect_switch_state = True
                                             
         #Define Our Images
         onimg = Image.open("src\On.png")
