@@ -93,12 +93,16 @@ def normal_Pendulam():
                         #Update Previous Normal Monster ID if Exist
                         hid.place(x=10, y=485)
                         eid.place(x=10, y=520, height=40, width=100)
+                        #Forget Previous Normal Monster Edition if Exist
                         hedi.place_forget()
                         eedi.place_forget()
+                        #Update Previous Normal Monster Edition if Exist
                         hedi.place(x=210, y=485)
                         eedi.place(x=210, y=520, height=40, width=100)
+                        #Forget Previous Normal Monster Copyright if Exist
                         hcprt.place_forget
                         ecprt.place_forget
+                        #Update Previous Normal Monster Copyright if Exist
                         hcprt.place(x=400, y=485)
                         ecprt.place(x=400, y=520, height=40, width=200)
                         normal_switch_state = False
@@ -108,7 +112,7 @@ def normal_Pendulam():
                         info_frame_Normal.place(x=300,y=1)#Update new Normal Monster Frame
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
-                        hid.place(x=10, y=655)
+                        hid.place(x=10, y=625)
                         eid.place(x=10, y=660, height=40, width=100)
                         hedi.place(x=210, y=625)
                         eedi.place(x=210, y=660, height=40, width=100)
@@ -179,7 +183,21 @@ def Effect_Pendulam():
         hid = tk.Label(info_frame_Effect, text="Serial ID", font=("SAO UI", 18))#Serial ID Heading
         hid.place(x=10, y=485)
         eid = tk.Entry(info_frame_Effect, textvariable=did)#Enter Title
-        eid.place(x=300, y=480, height=40, width=100)
+        eid.place(x=10, y=520, height=40, width=100)
+        #Edition
+        edilst = ['None', 'None', '1st Edition', 'Limited Edition', 'Anime Edition', 'Duel Terminal']# Frame List
+        dedi = tk.StringVar(info_frame_Effect)
+        dedi.set(edilst[0])
+        hedi = Label(info_frame_Effect, text="Card Edition", font=("SAO UI", 18))#Card Frame Heading
+        hedi.place(x=210, y=485)
+        eedi = OptionMenu(info_frame_Effect, dedi, *edilst)#Card Frame Choice
+        eedi.place(x=210, y=520, height=40, width=100)
+        #Copyright
+        dcprt = tk.StringVar(info_frame_Effect, value='©1996 KAZUKI TAKAHASHI')#Display Title
+        hcprt = tk.Label(info_frame_Effect, text="Copyright", font=("SAO UI", 18))#Title Heading
+        hcprt.place(x=400, y=485)
+        ecprt = tk.Entry(info_frame_Effect, textvariable=dcprt)#Enter Title
+        ecprt.place(x=400, y=520, height=40, width=200)
         def switch():
                 global effect_switch_state
                                 
@@ -192,18 +210,34 @@ def Effect_Pendulam():
                         #Forget Previous Effect Monster ID if Exist
                         hid.place_forget()
                         eid.place_forget()
-                        #Update Previous Effect Monster ID if Exist
+                        #Update Previous Normal Monster ID if Exist
                         hid.place(x=10, y=485)
-                        eid.place(x=300, y=480, height=40, width=100)
+                        eid.place(x=10, y=520, height=40, width=100)
+                        #Forget Previous Normal Monster Edition if Exist
+                        hedi.place_forget()
+                        eedi.place_forget()
+                        #Update Previous Normal Monster Edition if Exist
+                        hedi.place(x=210, y=485)
+                        eedi.place(x=210, y=520, height=40, width=100)
+                        #Forget Previous Normal Monster Copyright if Exist
+                        hcprt.place_forget
+                        ecprt.place_forget
+                        #Update Previous Normal Monster Copyright if Exist
+                        hcprt.place(x=400, y=485)
+                        ecprt.place(x=400, y=520, height=40, width=200)
                         effect_switch_state = False
                                                                 
                 else:
                         info_frame_Effect.place_forget#Forget Previous Effect Monster Frame if Exist
-                        info_frame_Effect.place(x=300,y=5)#Update new Effect Monster Frame
+                        info_frame_Effect.place(x=300,y=1)#Update new Effect Monster Frame
                         on_button.config(image = on)
                         effect_pendulam_frame.place(x=0,y=480,height=145)
-                        hid.place(x=10, y=635)
-                        eid.place(x=300, y=630, height=40, width=100)
+                        hid.place(x=10, y=625)
+                        eid.place(x=10, y=660, height=40, width=100)
+                        hedi.place(x=210, y=625)
+                        eedi.place(x=210, y=660, height=40, width=100)
+                        hcprt.place(x=400, y=625)
+                        ecprt.place(x=400, y=660, height=40, width=200)
                         effect_switch_state = True
                                             
         #Define Our Images
