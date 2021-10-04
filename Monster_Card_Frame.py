@@ -391,15 +391,15 @@ class Monster_Info():
                 def no_of_typs():
                         dtypvg = dtypv.get()
                         if dtypvg == '0 Types':
-                                typfrm0.tkraise()
+                                efftypfrm0.tkraise()
                         elif dtypvg == '1 Types':
-                                typfrm1.tkraise()
+                                efftypfrm1.tkraise()
                         elif dtypvg == '2 Types':
-                                typfrm2.tkraise()
+                                efftypfrm2.tkraise()
                         elif dtypvg == '3 Types':
-                                typfrm3.tkraise()
+                                efftypfrm3.tkraise()
                         elif dtypvg == '4 Types':
-                                typfrm4.tkraise()
+                                efftypfrm4.tkraise()
                 etyp = tk.Spinbox(info_frame_Effect, values=typlst, state = 'readonly', textvariable=dtypv,command=no_of_typs)#Card Type Choice
                 etyp.place(x=300, y=380, height=40, width=60)
                 #ATK/DEF
