@@ -387,7 +387,7 @@ class Monster_Info():
                 etyp4_4 = tk.Entry(efftypfrm4, textvariable=dtyp4)#4 Type 4
                 etyp4_4.place(x=180, y=1, height=40, width=50)
                 #No of Types
-                typfrm0.tkraise()        
+                efftypfrm0.tkraise()        
                 def no_of_typs():
                         dtypvg = dtypv.get()
                         if dtypvg == '0 Types':
