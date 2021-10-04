@@ -117,6 +117,81 @@ efftypfrm3 = tk.Frame(info_frame_Effect)#3 Types Frame
 efftypfrm3.place(x=370,y=380,height=44,width=300)
 efftypfrm4 = tk.Frame(info_frame_Effect)#4 Types Frame
 efftypfrm4.place(x=370,y=380,height=44,width=300)
+effect_pendulam_frame = tk.Frame(info_frame_Effect, width=678)#0 Types Frame
+effect_pendulam_frame = False#True=on False=off
+def effect_Pendulam():
+        #Pendulam Box Size
+        bxsz = ['Large','Medium','Small']#Pendulam Box Size List
+        dbxsz = tk.StringVar(effect_pendulam_frame)#Display Pendulam Box Size
+        dbxsz.set(bxsz[0])
+        hbxsz = Label(effect_pendulam_frame, text="Pendulam Box Size", font=("SAO UI", 18))#Pendulam Box Size Heading
+        hbxsz.place(x=10, y=5)
+        ebxsz = tk.Spinbox(effect_pendulam_frame, values=bxsz, state='readonly', textvariable=dbxsz)#Pendulam Box Size Choice
+        ebxsz.place(x=10, y=50, height=40, width=60)
+        #Pendulam Scale
+        dscal = tk.IntVar(info_frame_Effect)#Display Pendulam Scale
+        hscal = tk.Label(effect_pendulam_frame, text="Pendulam Scale", font=("SAO UI", 18))#Pendulam Scale Heading
+        hscal.place(x=170, y=5)
+        escal = tk.Spinbox(effect_pendulam_frame, from_=0 , to = 13 , state='readonly', textvariable=dscal)#Enter Pendulam Scale
+        escal.place(x=170, y=50, height=40, width=60)
+        #Effect Font Size
+        defsz = tk.StringVar(effect_pendulam_frame, value="29")#Display Effect Font Size
+        hefsz = Label(effect_pendulam_frame, text="Font Size", font=("SAO UI", 18))#Effect Font Size Heading
+        hefsz.place(x=310, y=5)
+        eefsz = tk.Spinbox(effect_pendulam_frame, from_=15 , to = 30, state = 'readonly', textvariable=defsz)#Effect Font Size Choice
+        eefsz.place(x=310, y=50, height=40, width=60)
+        #Card Effect
+        hdscrbox = Label(effect_pendulam_frame, text="Card's Description", font=("SAO UI", 18))#Card Effect Heading
+        hdscrbox.place(x=400, y=5)
+        dscrbox = tk.Text(effect_pendulam_frame)#Card Effect Box
+        dscrbox.place(x=400, y=50, height = 88, width = 200)
+        dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Card Effect Box Scrollbar
+        dscrboxsb.pack(side='right', fill='both')
+        dscrbox['yscrollcommand'] = dscrboxsb.set
+        #Serial ID
+        did = tk.StringVar(info_frame_Effect, value='Enter Card ID')#Display Serial ID
+        hid = tk.Label(info_frame_Effect, text="Serial ID", font=("SAO UI", 18))#Serial ID Heading
+        hid.place(x=10, y=485)
+        eid = tk.Entry(info_frame_Effect, textvariable=did)#Enter Title
+        eid.place(x=300, y=480, height=40, width=100)
+        def switch():
+                global effect_switch_state
+                                
+                # Determin is on or off
+                if effect_switch_state:
+                        info_frame_Effect.place_forget#Forget Previous Effect Monster Frame if Exist
+                        info_frame_Effect.place(x=300,y=50)#Update new Effect Monster Frame
+                        on_button.config(image = off)
+                        effect_pendulam_frame.place_forget()#Forget Previous Effect Monster Pendulam Frame if Exist
+                        #Forget Previous Effect Monster ID if Exist
+                        hid.place_forget()
+                        eid.place_forget()
+                        #Update Previous Effect Monster ID if Exist
+                        hid.place(x=10, y=485)
+                        eid.place(x=300, y=480, height=40, width=100)
+                        effect_switch_state = False
+                                                                
+                else:
+                        info_frame_Effect.place_forget#Forget Previous Effect Monster Frame if Exist
+                        info_frame_Effect.place(x=300,y=5)#Update new Effect Monster Frame
+                        on_button.config(image = on)
+                        effect_pendulam_frame.place(x=0,y=480,height=145)
+                        hid.place(x=10, y=635)
+                        eid.place(x=300, y=630, height=40, width=100)
+                        Effect_switch_state = True
+                                            
+        #Define Our Images
+        onimg = Image.open("src\On.png")
+        offimg = Image.open("src\Off.png") 
+        onsz=onimg.resize((40,40))
+        offsz=offimg.resize((40,40))
+        on=ImageTk.PhotoImage(onsz)
+        off=ImageTk.PhotoImage(offsz)
+        hpend = Label(info_frame_Effect, text="Is this a Pendulum card?", font=("SAO UI", 18))#Card Frame Heading
+        hpend.place(x=10, y=435)
+        # Create A Button
+        on_button = tk.Button(info_frame_Effect, image = off, bd = 0, command = switch)
+        on_button.place(x=300,y=430)
 #4Ritual Monster
 info_frame_Ritual = tk.Frame(ui, bg='darkcyan', width=678, height=585)
 info_frame_Ritual.place(x=300,y=50)
@@ -415,11 +490,11 @@ class Monster_Info():
                 edef.place(x=600, y=430, height=40, width=60)
                 Effect_Pendulam()
                 #Generate Button
-                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
-                normgen.place(x=1100, y=550, height=40, width=100)
+                effgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
+                effgen.place(x=1100, y=550, height=40, width=100)
                 #Save Button
-                normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
-                normsave.place(x=1200, y=550, height=40, width=100)
+                effsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
+                effsave.place(x=1200, y=550, height=40, width=100)
                                 
         def info_Ritual_Monster():
                 info_frame_Ritual.tkraise()
