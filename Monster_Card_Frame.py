@@ -76,13 +76,14 @@ def normal_Pendulam():
                         #Forget Previous Normal Monster ID if Exist
                         hid.place_forget()
                         eid.place_forget()
+                        #Update Previous Normal Monster ID if Exist
                         hid.place(x=10, y=485)
                         eid.place(x=300, y=480, height=40, width=100)
                         normal_switch_state = False
                                                                 
                 else:
-                        info_frame_Normal.place_forget
-                        info_frame_Normal.place(x=300,y=5)
+                        info_frame_Normal.place_forget#Forget Previous Normal Monster Frame if Exist
+                        info_frame_Normal.place(x=300,y=5)#Update new Normal Monster Frame
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
                         hid.place(x=10, y=635)
