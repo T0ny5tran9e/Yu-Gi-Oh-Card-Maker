@@ -106,7 +106,17 @@ def normal_Pendulam():
 #3Effect Monster
 info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=585)
 info_frame_Effect.place(x=300,y=50)
-info_frame_Effect.pack_propagate(0) 
+info_frame_Effect.pack_propagate(0)
+efftypfrm0 = tk.Frame(info_frame_Effect)#0 Types Frame
+efftypfrm0.place(x=370,y=380,height=44,width=300)
+efftypfrm1 = tk.Frame(info_frame_Effect)#1 Types Frame
+efftypfrm1.place(x=370,y=380,height=44,width=300)
+efftypfrm2 = tk.Frame(info_frame_Effect)#2 Types Frame
+efftypfrm2.place(x=370,y=380,height=44,width=300)
+efftypfrm3 = tk.Frame(info_frame_Effect)#3 Types Frame
+efftypfrm3.place(x=370,y=380,height=44,width=300)
+efftypfrm4 = tk.Frame(info_frame_Effect)#4 Types Frame
+efftypfrm4.place(x=370,y=380,height=44,width=300)
 #4Ritual Monster
 info_frame_Ritual = tk.Frame(ui, bg='darkcyan', width=678, height=585)
 info_frame_Ritual.place(x=300,y=50)
@@ -356,25 +366,25 @@ class Monster_Info():
                 htyp = Label(info_frame_Effect, text="Card Type", font=("SAO UI", 18))#Type Heading
                 htyp.place(x=10, y=385)
                 typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
-                etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#1 Type 1
+                etyp1_1 = tk.Entry(efftypfrm1, textvariable=dtyp1)#1 Type 1
                 etyp1_1.place(x=00, y=1, height=40, width=50)
-                etyp2_1 = tk.Entry(typfrm2, textvariable=dtyp1)#2 Type 1
+                etyp2_1 = tk.Entry(efftypfrm2, textvariable=dtyp1)#2 Type 1
                 etyp2_1.place(x=00, y=1, height=40, width=50)
-                etyp2_2 = tk.Entry(typfrm2, textvariable=dtyp2)#2 Type 2
+                etyp2_2 = tk.Entry(efftypfrm2, textvariable=dtyp2)#2 Type 2
                 etyp2_2.place(x=60, y=1, height=40, width=50)
-                etyp3_1 = tk.Entry(typfrm3, textvariable=dtyp1)#3 Type 1
+                etyp3_1 = tk.Entry(efftypfrm3, textvariable=dtyp1)#3 Type 1
                 etyp3_1.place(x=0, y=1, height=40, width=50)
-                etyp3_2 = tk.Entry(typfrm3, textvariable=dtyp2)#3 Type 2
+                etyp3_2 = tk.Entry(efftypfrm3, textvariable=dtyp2)#3 Type 2
                 etyp3_2.place(x=60, y=1, height=40, width=50)
-                etyp3_3 = tk.Entry(typfrm3, textvariable=dtyp3)#3 Type 3
+                etyp3_3 = tk.Entry(efftypfrm3, textvariable=dtyp3)#3 Type 3
                 etyp3_3.place(x=120, y=1, height=40, width=50)
-                etyp4_1 = tk.Entry(typfrm4, textvariable=dtyp1)#4 Type 1
+                etyp4_1 = tk.Entry(efftypfrm4, textvariable=dtyp1)#4 Type 1
                 etyp4_1.place(x=00, y=1, height=40, width=50)
-                etyp4_2 = tk.Entry(typfrm4, textvariable=dtyp2)#4 Type 2
+                etyp4_2 = tk.Entry(efftypfrm4, textvariable=dtyp2)#4 Type 2
                 etyp4_2.place(x=60, y=1, height=40, width=50)
-                etyp4_3 = tk.Entry(typfrm4, textvariable=dtyp3)#4 Type 3
+                etyp4_3 = tk.Entry(efftypfrm4, textvariable=dtyp3)#4 Type 3
                 etyp4_3.place(x=120, y=1, height=40, width=50)
-                etyp4_4 = tk.Entry(typfrm4, textvariable=dtyp4)#4 Type 4
+                etyp4_4 = tk.Entry(efftypfrm4, textvariable=dtyp4)#4 Type 4
                 etyp4_4.place(x=180, y=1, height=40, width=50)
                 #No of Types
                 typfrm0.tkraise()        
