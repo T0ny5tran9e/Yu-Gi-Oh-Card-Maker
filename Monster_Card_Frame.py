@@ -289,19 +289,127 @@ class Monster_Info():
                 info_frame_Effect.tkraise()
                 
                 #Title
-                dt = tk.StringVar(info_frame_Effect, value='Enter Title')#Display
-                htitle = Label(info_frame_Effect, text="Title", font=("century gothic", 20))#Title Heading
-                htitle.place(x=10, y=25)
-                etitle = Entry(info_frame_Effect, textvariable=dt)#Enter Title
-                etitle.place(x=300, y=35, height=40, width=200)
-                #Card Frame
-                frmlst = ['Normal Monster', 'Effect Monster', 'Ritual Monster', 'Fusion Monster', 'Synchro Monster', 'XYZ Monster' , 'Link', 'Token' , 'Token (No ATK/DEF)', 'Spell', 'Trap']# Frame List
-                df = tk.StringVar(info_frame_Effect)
-                df.set(frmlst[0])
-                hframe = Label(info_frame_Effect, text="Card Frame", font=("century gothic", 20))#Card Frame Heading
-                hframe.place(x=10, y=75)
-                eframe = tk.OptionMenu(info_frame_Effect, df, *frmlst)#Card Frame Choice
-                eframe.place(x=300, y=85, height=40, width=200)
+                dtit = tk.StringVar(info_frame_Effect, value='Enter Title')#Display Title
+                htitle = tk.Label(info_frame_Effect, text="Title", font=("SAO UI", 18))#Title Heading
+                htitle.place(x=10, y=35)
+                etitle = tk.Entry(info_frame_Effect, textvariable=dtit)#Enter Title
+                etitle.place(x=300, y=30, height=40, width=200)
+                #Card Attribute
+                attrilst = ['Select an Attribute', 'Dark', 'Divine', 'Earth', 'Fire', 'Light', 'Water', 'Wind']# Frame List
+                dat = tk.StringVar(info_frame_Effect)
+                dat.set(attrilst[0])
+                hattri = Label(info_frame_Effect, text="Card Frame", font=("SAO UI", 18))#Card Frame Heading
+                hattri.place(x=10, y=85)
+                eattri = OptionMenu(info_frame_Effect, dat, *attrilst)#Card Frame Choice
+                eattri.place(x=300, y=80, height=40, width=200)
+                #Card Level
+                dlvl = tk.IntVar(info_frame_Effect)#Display DEF
+                hlvl = tk.Label(info_frame_Effect, text="Level", font=("SAO UI", 18))#Title Heading
+                hlvl.place(x=10, y=135)
+                elvl = tk.Spinbox(info_frame_Effect, from_= 0 , to = 12, textvariable=dlvl)#Enter Title
+                elvl.place(x=100, y=130, height=40, width=60)
+                #Hologram
+                hololst = ['None', 'None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
+                dholo = tk.StringVar(info_frame_Effect)#Display Hologram
+                dholo.set(hololst[0])
+                hholo = Label(info_frame_Effect, text="Hologram", font=("SAO UI", 18))#Hologram Heading
+                hholo.place(x=170, y=135)
+                eholo = OptionMenu(info_frame_Effect, dholo, *hololst)#Hologram Choice
+                eholo.place(x=280, y=130, height=40, width=80)
+                #Rarity
+                rarelst = ['Normal', 'Normal', 'Normal Rare', 'Super Rare', 'Ultra Rare', 'Secret Rare', 'Ultra Secret Rare', 'Gold Rare']#Rarity List
+                drare = tk.StringVar(info_frame_Effect)#Display Rarity
+                drare.set(rarelst[0])
+                hrare = Label(info_frame_Effect, text="Rarity", font=("SAO UI", 18))#Rarity Heading
+                hrare.place(x=370, y=135)
+                erare = OptionMenu(info_frame_Effect, drare, *rarelst)#Rarity Choice
+                erare.place(x=450, y=130, height=40, width=150)
+                #Button for Selecting Image
+                artbrws = tk.Button(info_frame_Effect, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', font=myFont, command = browseIMG)
+                artbrws.place(x=100, y=180, height=40, width=500)
+                #Deck Code
+                ddcd = tk.StringVar(info_frame_Effect, value="Enter Code")#Display Deck Code
+                hdkcod = Label(info_frame_Effect, text="Card's Deck Code", font=("SAO UI", 18))#Deck Code Heading
+                hdkcod.place(x=10, y=235)
+                edkcod = tk.Entry(info_frame_Effect, textvariable=ddcd)#Enter Title
+                edkcod.place(x=300, y=230, height=40, width=200)
+                #Card Description
+                hdscrbox = Label(info_frame_Effect, text="Card's Description", font=("SAO UI", 18))#Card Description Heading
+                hdscrbox.place(x=10, y=300)
+                dscrbox = tk.Text(info_frame_Effect)#Description Box
+                dscrbox.place(x=300, y=280, height = 88, width = 200)
+                dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
+                dscrboxsb.pack(side='right', fill='both')
+                dscrbox['yscrollcommand'] = dscrboxsb.set
+                #Font Size
+                dtsz = tk.StringVar(info_frame_Effect, value="29")#Display Deck Code
+                htsz = Label(info_frame_Effect, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
+                htsz.place(x=540, y=280)
+                etsz = tk.Spinbox(info_frame_Effect, from_=15 , to = 30, state = 'readonly', textvariable=dtsz)#Card Type Choice#Enter Title
+                etsz.place(x=545, y=320, height=40, width=60)
+                #Types
+                dtypv = tk.StringVar(info_frame_Effect,"0 Type")
+                dtyp1 = tk.StringVar(info_frame_Effect, value="Type 1")#Display Type1
+                dtyp2 = tk.StringVar(info_frame_Effect, value="Type 2")#Display Type2
+                dtyp3 = tk.StringVar(info_frame_Effect, value="Type 3")#Display Type3
+                dtyp4 = tk.StringVar(info_frame_Effect, value="Type 4")#Display Type4
+                htyp = Label(info_frame_Effect, text="Card Type", font=("SAO UI", 18))#Type Heading
+                htyp.place(x=10, y=385)
+                typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
+                etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#1 Type 1
+                etyp1_1.place(x=00, y=1, height=40, width=50)
+                etyp2_1 = tk.Entry(typfrm2, textvariable=dtyp1)#2 Type 1
+                etyp2_1.place(x=00, y=1, height=40, width=50)
+                etyp2_2 = tk.Entry(typfrm2, textvariable=dtyp2)#2 Type 2
+                etyp2_2.place(x=60, y=1, height=40, width=50)
+                etyp3_1 = tk.Entry(typfrm3, textvariable=dtyp1)#3 Type 1
+                etyp3_1.place(x=0, y=1, height=40, width=50)
+                etyp3_2 = tk.Entry(typfrm3, textvariable=dtyp2)#3 Type 2
+                etyp3_2.place(x=60, y=1, height=40, width=50)
+                etyp3_3 = tk.Entry(typfrm3, textvariable=dtyp3)#3 Type 3
+                etyp3_3.place(x=120, y=1, height=40, width=50)
+                etyp4_1 = tk.Entry(typfrm4, textvariable=dtyp1)#4 Type 1
+                etyp4_1.place(x=00, y=1, height=40, width=50)
+                etyp4_2 = tk.Entry(typfrm4, textvariable=dtyp2)#4 Type 2
+                etyp4_2.place(x=60, y=1, height=40, width=50)
+                etyp4_3 = tk.Entry(typfrm4, textvariable=dtyp3)#4 Type 3
+                etyp4_3.place(x=120, y=1, height=40, width=50)
+                etyp4_4 = tk.Entry(typfrm4, textvariable=dtyp4)#4 Type 4
+                etyp4_4.place(x=180, y=1, height=40, width=50)
+                #No of Types
+                typfrm0.tkraise()        
+                def no_of_typs():
+                        dtypvg = dtypv.get()
+                        if dtypvg == '0 Types':
+                                typfrm0.tkraise()
+                        elif dtypvg == '1 Types':
+                                typfrm1.tkraise()
+                        elif dtypvg == '2 Types':
+                                typfrm2.tkraise()
+                        elif dtypvg == '3 Types':
+                                typfrm3.tkraise()
+                        elif dtypvg == '4 Types':
+                                typfrm4.tkraise()
+                etyp = tk.Spinbox(info_frame_Effect, values=typlst, state = 'readonly', textvariable=dtypv,command=no_of_typs)#Card Type Choice
+                etyp.place(x=300, y=380, height=40, width=60)
+                #ATK/DEF
+                datk = tk.IntVar(info_frame_Effect)#Display ATK
+                ddef = tk.IntVar(info_frame_Effect)#Display DEF
+                hatk = tk.Label(info_frame_Effect, text="ATK", font=("SAO UI", 18))#ATK Heading
+                hatk.place(x=400, y=435)
+                eatk = tk.Spinbox(info_frame_Effect, from_=0 , to = 9999, textvariable=datk)#Enter ATK
+                eatk.place(x=450, y=430, height=40, width=60)
+                hdef = tk.Label(info_frame_Effect, text="DEF", font=("SAO UI", 18))#DEF Heading
+                hdef.place(x=550, y=435)
+                edef = tk.Spinbox(info_frame_Effect, from_=0 , to = 9999, textvariable=ddef)#Enter DEF
+                edef.place(x=600, y=430, height=40, width=60)
+                Effect_Pendulam()
+                #Generate Button
+                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
+                normgen.place(x=1100, y=550, height=40, width=100)
+                #Save Button
+                normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
+                normsave.place(x=1200, y=550, height=40, width=100)
                                 
         def info_Ritual_Monster():
                 info_frame_Ritual.tkraise()
