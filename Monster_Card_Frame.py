@@ -9,15 +9,19 @@ from PIL import Image,ImageTk
 ui = tk.Tk() #ui as User Interface
 myFont = font.Font(family='SAO UI')
 #Monster Card Frame
-#1Card Frame choice
+#0Card Frame choice
 monster_choice_frame=tk.Frame(ui,bg='white', width=280, height=585)
 monster_choice_frame.place(x=10,y=50)
 monster_choice_frame.pack_propagate(0)
 monster_choice_frame.config(borderwidth=5, relief=SUNKEN)
 
+#1Canvas
+info_frame_Canvas = tk.Canvas(ui, width=678, height=786)
+info_frame_Canvas.place(x=300,y=0)
+
 #2Normal Monster
-info_frame_Normal = tk.Frame(ui, width=678, height=700)#Main Frame
-info_frame_Normal.place(x=300,y=50)
+info_frame_Normal = tk.Frame(info_frame_Canvas, width=678, height=700)#Main Frame
+info_frame_Normal.place(x=0,y=50)
 info_frame_Normal.pack_propagate(0)
 typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
 typfrm0.place(x=370,y=380,height=44,width=300)
@@ -86,7 +90,7 @@ def normal_Pendulam():
                 # Determin is on or off
                 if normal_switch_state:
                         info_frame_Normal.place_forget()#Forget Previous Normal Monster Frame if Exist
-                        info_frame_Normal.place(x=300,y=50)#Update new Normal Monster Frame
+                        info_frame_Normal.place(x=0,y=50)#Update new Normal Monster Frame
                         on_button.config(image = off)
                         normal_pendulam_frame.place_forget()#Forget Previous Normal Monster Pendulam Frame if Exist
                         #Forget Previous Normal Monster ID if Exist
@@ -111,7 +115,7 @@ def normal_Pendulam():
                                                                 
                 else:
                         info_frame_Normal.place_forget()#Forget Previous Normal Monster Frame if Exist
-                        info_frame_Normal.place(x=300,y=1)#Update new Normal Monster Frame
+                        info_frame_Normal.place(x=0,y=1)#Update new Normal Monster Frame
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
                         #Forget Previous Normal Monster ID if Exist
@@ -148,8 +152,8 @@ def normal_Pendulam():
         on_button.place(x=300,y=430)
 
 #3Effect Monster
-info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=700)
-info_frame_Effect.place(x=300,y=50)
+info_frame_Effect = tk.Frame(info_frame_Canvas, width=678, height=700)
+info_frame_Effect.place(x=0,y=50)
 info_frame_Effect.pack_propagate(0)
 efftypfrm0 = tk.Frame(info_frame_Effect)#0 Types Frame
 efftypfrm0.place(x=370,y=380,height=44,width=300)
@@ -161,7 +165,7 @@ efftypfrm3 = tk.Frame(info_frame_Effect)#3 Types Frame
 efftypfrm3.place(x=370,y=380,height=44,width=300)
 efftypfrm4 = tk.Frame(info_frame_Effect)#4 Types Frame
 efftypfrm4.place(x=370,y=380,height=44,width=300)
-effect_pendulam_frame = tk.Frame(info_frame_Effect,bg='red', width=678)#0 Types Frame
+effect_pendulam_frame = tk.Frame(info_frame_Effect, width=678)#0 Types Frame
 effect_switch_state = False#True=on False=off
 def effect_Pendulam():
         #Pendulam Box Size
@@ -218,7 +222,7 @@ def effect_Pendulam():
                 # Determin is on or off
                 if effect_switch_state:
                         info_frame_Effect.place_forget()#Forget Previous Effect Monster Frame if Exist
-                        info_frame_Effect.place(x=300,y=50)#Update new Effect Monster Frame
+                        info_frame_Effect.place(x=0,y=50)#Update new Effect Monster Frame
                         on_button.config(image = off)
                         effect_pendulam_frame.place_forget()#Forget Previous Effect Monster Pendulam Frame if Exist
                         #Forget Previous Effect Monster ID if Exist
@@ -243,7 +247,7 @@ def effect_Pendulam():
                                                                 
                 else:
                         info_frame_Effect.place_forget()#Forget Previous Effect Monster Frame if Exist
-                        info_frame_Effect.place(x=300,y=1)#Update new Effect Monster Frame
+                        info_frame_Effect.place(x=0,y=1)#Update new Effect Monster Frame
                         on_button.config(image = on)
                         effect_pendulam_frame.place(x=0,y=480,height=145)
                         #Forget Previous Effect Monster ID if Exist
@@ -280,47 +284,71 @@ def effect_Pendulam():
         on_button.place(x=300,y=430)
         
 #4Ritual Monster
-info_frame_Ritual = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Ritual.place(x=300,y=50)
+info_frame_Ritual = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Ritual.place(x=0,y=50)
 info_frame_Ritual.pack_propagate(0) 
 #5Fusion Monster
-info_frame_Fusion = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Fusion.place(x=300,y=50)
+info_frame_Fusion = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Fusion.place(x=0,y=50)
 info_frame_Fusion.pack_propagate(0) 
 #6Synchro Monster
-info_frame_Synchro = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Synchro.place(x=300,y=50)
+info_frame_Synchro = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Synchro.place(x=0,y=50)
 info_frame_Synchro.pack_propagate(0) 
 #7XYZ Monster
-info_frame_XYZ = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_XYZ.place(x=300,y=50)
+info_frame_XYZ = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_XYZ.place(x=0,y=50)
 info_frame_XYZ.pack_propagate(0)
 #8Link
-info_frame_Link = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Link.place(x=300,y=50)
+info_frame_Link = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Link.place(x=0,y=50)
 info_frame_Link.pack_propagate(0)
 #9Token
-info_frame_Token = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Token.place(x=300,y=50)
+info_frame_Token = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Token.place(x=0,y=50)
 info_frame_Token.pack_propagate(0)
 #10Token (No ATK/DEF)
-info_frame_Token_nil_atk_def = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Token_nil_atk_def.place(x=300,y=50)
+info_frame_Token_nil_atk_def = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Token_nil_atk_def.place(x=0,y=50)
 info_frame_Token_nil_atk_def.pack_propagate(0)
 #11Spell
-info_frame_Spell = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Spell.place(x=300,y=50)
+info_frame_Spell = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Spell.place(x=0,y=50)
 info_frame_Spell.pack_propagate(0)
 #12Trap
-info_frame_Trap = tk.Frame(ui, bg='darkcyan', width=678, height=585)
-info_frame_Trap.place(x=300,y=50)
+info_frame_Trap = tk.Frame(info_frame_Canvas, bg='darkcyan', width=678, height=585)
+info_frame_Trap.place(x=0,y=50)
 info_frame_Trap.pack_propagate(0)
 #13Temp Card Img View
 temp_card_img = tk.Frame(ui, width=350, height=485)
 temp_card_img.place(x=999,y=50)
 temp_card_img.pack_propagate(0) 
 temp_card_img.config(borderwidth=5, relief=SUNKEN) 
- 
+
+def frame_clear():
+        for i in info_frame_Normal.winfo_children():
+                i.place_forget()
+        for i in info_frame_Effect.winfo_children():
+                i.place_forget()
+        for i in info_frame_Ritual.winfo_children():
+                i.place_forget()
+        for i in info_frame_Fusion.winfo_children():
+                i.place_forget()
+        for i in info_frame_Synchro.winfo_children():
+                i.place_forget()
+        for i in info_frame_XYZ.winfo_children():
+                i.place_forget()
+        for i in info_frame_Link.winfo_children():
+                i.place_forget()
+        for i in info_frame_Token.winfo_children():
+                i.place_forget()
+        for i in info_frame_Token_nil_atk_def.winfo_children():
+                i.place_forget()
+        for i in info_frame_Trap.winfo_children():
+                i.place_forget()
+        for i in info_frame_Spell.winfo_children():
+                i.place_forget()
+        
 #Browse Image for card Artwork
 def browseIMG():
     filename = filedialog.askopenfilename(initialdir = "/", title = "Select an Image for Artwork", filetypes = 
@@ -333,9 +361,7 @@ def browseIMG():
 #Monster Card
 class Monster_Info():
         def info_Normal_Monster():
-                for i in info_frame_Normal.winfo_children():
-                        i.place_forget()
-                
+                frame_clear()
                 info_frame_Normal.tkraise()
                 #Title
                 dtit = tk.StringVar(info_frame_Normal, value='Enter Title')#Display Title
@@ -462,8 +488,7 @@ class Monster_Info():
                 normsave.place(x=1200, y=550, height=40, width=100)
                                 
         def info_Effect_Monster():
-                for i in info_frame_Effect.winfo_children():
-                        i.place_forget()
+                frame_clear()
                 info_frame_Effect.tkraise()
                 
                 #Title
