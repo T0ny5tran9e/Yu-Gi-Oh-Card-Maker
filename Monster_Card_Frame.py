@@ -148,7 +148,7 @@ def normal_Pendulam():
         on_button.place(x=300,y=430)
 
 #3Effect Monster
-info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=585)
+info_frame_Effect = tk.Frame(ui, bg='darkcyan', width=678, height=700)
 info_frame_Effect.place(x=300,y=50)
 info_frame_Effect.pack_propagate(0)
 efftypfrm0 = tk.Frame(info_frame_Effect)#0 Types Frame
@@ -161,9 +161,9 @@ efftypfrm3 = tk.Frame(info_frame_Effect)#3 Types Frame
 efftypfrm3.place(x=370,y=380,height=44,width=300)
 efftypfrm4 = tk.Frame(info_frame_Effect)#4 Types Frame
 efftypfrm4.place(x=370,y=380,height=44,width=300)
-effect_pendulam_frame = tk.Frame(info_frame_Effect, width=678)#0 Types Frame
+effect_pendulam_frame = tk.Frame(info_frame_Effect,bg='red', width=678)#0 Types Frame
 effect_switch_state = False#True=on False=off
-def Effect_Pendulam():
+def effect_Pendulam():
         #Pendulam Box Size
         bxsz = ['Large','Medium','Small']#Pendulam Box Size List
         dbxsz = tk.StringVar(effect_pendulam_frame)#Display Pendulam Box Size
@@ -217,43 +217,55 @@ def Effect_Pendulam():
                                 
                 # Determin is on or off
                 if effect_switch_state:
-                        info_frame_Effect.place_forget#Forget Previous Effect Monster Frame if Exist
+                        info_frame_Effect.place_forget()#Forget Previous Effect Monster Frame if Exist
                         info_frame_Effect.place(x=300,y=50)#Update new Effect Monster Frame
                         on_button.config(image = off)
                         effect_pendulam_frame.place_forget()#Forget Previous Effect Monster Pendulam Frame if Exist
                         #Forget Previous Effect Monster ID if Exist
                         hid.place_forget()
                         eid.place_forget()
-                        #Update Previous Normal Monster ID if Exist
+                        #Update Previous Effect Monster ID if Exist
                         hid.place(x=10, y=485)
                         eid.place(x=10, y=520, height=40, width=100)
-                        #Forget Previous Normal Monster Edition if Exist
+                        #Forget Previous Effect Monster Edition if Exist
                         hedi.place_forget()
                         eedi.place_forget()
-                        #Update Previous Normal Monster Edition if Exist
+                        #Update Previous Effect Monster Edition if Exist
                         hedi.place(x=210, y=485)
                         eedi.place(x=210, y=520, height=40, width=100)
-                        #Forget Previous Normal Monster Copyright if Exist
-                        hcprt.place_forget
-                        ecprt.place_forget
-                        #Update Previous Normal Monster Copyright if Exist
+                        #Forget Previous Effect Monster Copyright if Exist
+                        hcprt.place_forget()
+                        ecprt.place_forget()
+                        #Update Previous Effect Monster Copyright if Exist
                         hcprt.place(x=400, y=485)
                         ecprt.place(x=400, y=520, height=40, width=200)
                         effect_switch_state = False
                                                                 
                 else:
-                        info_frame_Effect.place_forget#Forget Previous Effect Monster Frame if Exist
+                        info_frame_Effect.place_forget()#Forget Previous Effect Monster Frame if Exist
                         info_frame_Effect.place(x=300,y=1)#Update new Effect Monster Frame
                         on_button.config(image = on)
                         effect_pendulam_frame.place(x=0,y=480,height=145)
+                        #Forget Previous Effect Monster ID if Exist
+                        hid.place_forget()
+                        eid.place_forget()
+                        #Update Previous Effect Monster ID if Exist
                         hid.place(x=10, y=625)
                         eid.place(x=10, y=660, height=40, width=100)
+                        #Forget Previous Effect Monster Edition if Exist
+                        hedi.place_forget()
+                        eedi.place_forget()
+                        #Update Previous Effect Monster Edition if Exist
                         hedi.place(x=210, y=625)
                         eedi.place(x=210, y=660, height=40, width=100)
+                        #Forget Previous Effect Monster Copyright if Exist
+                        hcprt.place_forget()
+                        ecprt.place_forget()
+                        #Update Previous Effect Monster Copyright if Exist
                         hcprt.place(x=400, y=625)
                         ecprt.place(x=400, y=660, height=40, width=200)
                         effect_switch_state = True
-                                            
+                                        
         #Define Our Images
         onimg = Image.open("src\On.png")
         offimg = Image.open("src\Off.png") 
@@ -321,17 +333,6 @@ def browseIMG():
 #Monster Card
 class Monster_Info():
         def info_Normal_Monster():
-                
-                """info_frame_Normal.place_forget
-                info_frame_Effect.place_forget
-                info_frame_Normal.place_forget
-                info_frame_Normal.place_forget
-                info_frame_Normal.place_forget
-                info_frame_Normal.place_forget
-                info_frame_Normal.place_forget
-                info_frame_Normal.place_forget
-                info_Normal_Monster.forget()
-                info_Effect_Monster.forget()"""
                 for i in info_frame_Normal.winfo_children():
                         i.place_forget()
                 
@@ -461,6 +462,8 @@ class Monster_Info():
                 normsave.place(x=1200, y=550, height=40, width=100)
                                 
         def info_Effect_Monster():
+                for i in info_frame_Effect.winfo_children():
+                        i.place_forget()
                 info_frame_Effect.tkraise()
                 
                 #Title
@@ -578,7 +581,7 @@ class Monster_Info():
                 hdef.place(x=550, y=435)
                 edef = tk.Spinbox(info_frame_Effect, from_=0 , to = 9999, textvariable=ddef)#Enter DEF
                 edef.place(x=600, y=430, height=40, width=60)
-                Effect_Pendulam()
+                effect_Pendulam()
                 #Generate Button
                 effgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
                 effgen.place(x=1100, y=550, height=40, width=100)
