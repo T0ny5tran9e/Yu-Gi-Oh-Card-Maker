@@ -5,7 +5,7 @@ from tkinter.ttk import *
 from tkinter import filedialog
 from PIL import Image,ImageTk
 
-from NormalCard import info_Normal_Monster
+#from NormalCard import info_Normal_Monster
 ui = tk.Tk() #ui as User Interface
 myFont = font.Font(family='SAO UI')
 #Monster Card Frame
@@ -85,7 +85,7 @@ def normal_Pendulam():
                                 
                 # Determin is on or off
                 if normal_switch_state:
-                        info_frame_Normal.place_forget#Forget Previous Normal Monster Frame if Exist
+                        info_frame_Normal.place_forget()#Forget Previous Normal Monster Frame if Exist
                         info_frame_Normal.place(x=300,y=50)#Update new Normal Monster Frame
                         on_button.config(image = off)
                         normal_pendulam_frame.place_forget()#Forget Previous Normal Monster Pendulam Frame if Exist
@@ -102,26 +102,38 @@ def normal_Pendulam():
                         hedi.place(x=210, y=485)
                         eedi.place(x=210, y=520, height=40, width=100)
                         #Forget Previous Normal Monster Copyright if Exist
-                        hcprt.place_forget
-                        ecprt.place_forget
+                        hcprt.place_forget()
+                        ecprt.place_forget()
                         #Update Previous Normal Monster Copyright if Exist
                         hcprt.place(x=400, y=485)
                         ecprt.place(x=400, y=520, height=40, width=200)
                         normal_switch_state = False
                                                                 
                 else:
-                        info_frame_Normal.place_forget#Forget Previous Normal Monster Frame if Exist
+                        info_frame_Normal.place_forget()#Forget Previous Normal Monster Frame if Exist
                         info_frame_Normal.place(x=300,y=1)#Update new Normal Monster Frame
                         on_button.config(image = on)
                         normal_pendulam_frame.place(x=0,y=480,height=145)
+                        #Forget Previous Normal Monster ID if Exist
+                        hid.place_forget()
+                        eid.place_forget()
+                        #Update Previous Normal Monster ID if Exist
                         hid.place(x=10, y=625)
                         eid.place(x=10, y=660, height=40, width=100)
+                        #Forget Previous Normal Monster Edition if Exist
+                        hedi.place_forget()
+                        eedi.place_forget()
+                        #Update Previous Normal Monster Edition if Exist
                         hedi.place(x=210, y=625)
                         eedi.place(x=210, y=660, height=40, width=100)
+                        #Forget Previous Normal Monster Copyright if Exist
+                        hcprt.place_forget()
+                        ecprt.place_forget()
+                        #Update Previous Normal Monster Copyright if Exist
                         hcprt.place(x=400, y=625)
                         ecprt.place(x=400, y=660, height=40, width=200)
                         normal_switch_state = True
-                                            
+                                        
         #Define Our Images
         onimg = Image.open("src\On.png")
         offimg = Image.open("src\Off.png") 
@@ -309,6 +321,7 @@ def browseIMG():
 #Monster Card
 class Monster_Info():
         def info_Normal_Monster():
+                
                 """info_frame_Normal.place_forget
                 info_frame_Effect.place_forget
                 info_frame_Normal.place_forget
@@ -316,9 +329,12 @@ class Monster_Info():
                 info_frame_Normal.place_forget
                 info_frame_Normal.place_forget
                 info_frame_Normal.place_forget
-                info_frame_Normal.place_forget"""
+                info_frame_Normal.place_forget
                 info_Normal_Monster.forget()
-                info_Effect_Monster.forget()
+                info_Effect_Monster.forget()"""
+                for i in info_frame_Normal.winfo_children():
+                        i.place_forget()
+                
                 info_frame_Normal.tkraise()
                 #Title
                 dtit = tk.StringVar(info_frame_Normal, value='Enter Title')#Display Title
@@ -435,6 +451,7 @@ class Monster_Info():
                 hdef.place(x=550, y=435)
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter DEF
                 edef.place(x=600, y=430, height=40, width=60)
+               
                 normal_Pendulam()
                 #Generate Button
                 normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
