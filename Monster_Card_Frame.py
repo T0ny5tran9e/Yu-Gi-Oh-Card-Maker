@@ -4,6 +4,7 @@ import tkinter.font as font
 from tkinter.ttk import * 
 from tkinter import filedialog
 from PIL import Image,ImageTk
+from info_hub import *
 
 #from NormalCard import info_Normal_Monster
 ui = tk.Tk() #ui as User Interface
@@ -478,10 +479,19 @@ class Monster_Info():
                 hdef.place(x=550, y=435)
                 edef = tk.Spinbox(info_frame_Normal, from_=0 , to = 9999, textvariable=ddef)#Enter DEF
                 edef.place(x=600, y=430, height=40, width=60)
-               
+                #get variables
+                """def normal_info():
+                        print (dtit.get())
+                        print (dat.get())
+                        print (dlvl.get())"""              
+                #xt=
+                #yt=
+                #zt=
+                from info_hub import normal_info
+                
                 normal_Pendulam()
                 #Generate Button
-                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont)
+                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont, command=lambda:normal_info(dtit.get(),dat.get(),dlvl.get()))
                 normgen.place(x=1100, y=550, height=40, width=100)
                 #Save Button
                 normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
