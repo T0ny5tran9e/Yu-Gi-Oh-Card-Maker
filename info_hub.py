@@ -1,4 +1,14 @@
-def normal_info(tit,at,lvl):
-    print (tit)
-    print (at)
-    print (lvl)
+def normal_info(tit,at,lvl,holo,rare,art,dcd,dscrbox,tsz):
+    print("Normal Monster")
+    print (tit.get())
+    print (at.get())
+    print (lvl.get())
+    print (holo.get())
+    print (rare.get())
+    print (art.get())
+    print (dcd.get())
+    print (dscrbox.get())
+    print (tsz.get())
+    print (lvl.get())
+    print (lvl.get())
+    print (lvl.get())

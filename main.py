@@ -5,7 +5,8 @@ from Monster_Card_Frame import *
 ui.title("YU-GI-OH! Card Maker")
 screenwidth= ui.winfo_screenwidth()               
 screenheight= ui.winfo_screenheight()               
-ui.geometry("%dx%d" % (screenwidth, screenheight))#UI full size M2
+ui.geometry("%dx%d+0+0" % (screenwidth, screenheight))#UI full size M2
+ui.state("zoomed")
 ui.resizable(False,False)
 
 df = tk.StringVar(ui,"0")

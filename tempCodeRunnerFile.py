@@ -1,1 +1,2 @@
-from Monster_Card_Frame import *
+ui.state("zoomed")
+ui.resizable(False,False)
