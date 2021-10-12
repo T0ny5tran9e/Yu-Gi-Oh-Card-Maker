@@ -347,14 +347,16 @@ def frame_clear():
                 i.place_forget()
         
 #Browse Image for card Artwork
+normart=None
 def browseIMG():
+        global normart
         filename = filedialog.askopenfilename(initialdir = "/", title = "Select an Image for Artwork", filetypes = 
         (
                 ("PNG Files", "*.png*"), ("JPEG Files", "*.jpg*"), ("JPEG Files", "*.jpeg*"), ("SVG Files", "*.svg*"), 
                 ("SVG Files", "*.svgz*"), ("GIF Files", "*.gif*"), ("ICON Files", "*.ico*"), ("WEBP Files", "*.webp*"), 
                 ("BMP Files", "*.bmp*"),("All Files","*.*")
         ))
-        
+        normart=filename
 #Monster Card
 class Monster_Info():
         def info_Normal_Monster():
@@ -378,7 +380,7 @@ class Monster_Info():
                 dlvl = tk.IntVar(info_frame_Normal)#Display DEF
                 hlvl = tk.Label(info_frame_Normal, text="Level", font=("SAO UI", 18))#Title Heading
                 hlvl.place(x=10, y=135)
-                elvl = tk.Spinbox(info_frame_Normal, from_= 0 , to = 12, textvariable=dlvl)#Enter Title
+                elvl = tk.Spinbox(info_frame_Normal, from_= 0 , to = 12, state = 'readonly', textvariable=dlvl)#Enter Title
                 elvl.place(x=100, y=130, height=40, width=60)
                 #Hologram
                 hololst = ['None', 'None', 'Holo 1', 'Holo 2', 'Holo 3', 'Holo 4', 'Holo 5', 'Holo 6', 'Holo 7', 'Holo 8']#Level List
@@ -414,6 +416,7 @@ class Monster_Info():
                 dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
                 dscrboxsb.pack(side='right', fill='both')
                 dscrbox['yscrollcommand'] = dscrboxsb.set
+                ddscrbox = tk.StringVar(info_frame_Normal,value=dscrbox)#Display Deck Code
                 #Font Size
                 dtsz = tk.StringVar(info_frame_Normal, value="29")#Display Deck Code
                 htsz = Label(info_frame_Normal, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
@@ -480,7 +483,8 @@ class Monster_Info():
                 from info_hub import normal_info
                 normal_Pendulam()
                 #Generate Button
-                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont, command=lambda:normal_info(dtit,dat,dlvl,dholo,drare,filename,ddcd,dscrbox,tsz))
+                #dart=browseIMG()
+                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont, command=lambda:normal_info(dtit,dat,dlvl,dholo,drare,normart,ddcd,ddscrbox,dtsz))
                 normgen.place(x=1100, y=550, height=40, width=100)
                 #Save Button
                 normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)

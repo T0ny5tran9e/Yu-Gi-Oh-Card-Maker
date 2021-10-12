@@ -1,2 +1,1 @@
-ui.state("zoomed")
-ui.resizable(False,False)
+ui.title("YU-GI-OH! Card Maker")
