@@ -20,16 +20,7 @@ monster_choice_frame.config(borderwidth=5, relief=SUNKEN)
 info_frame_Normal = tk.Frame(ui, width=678, height=700)#Main Frame
 info_frame_Normal.place(x=300,y=50)
 info_frame_Normal.pack_propagate(0)
-typfrm0 = tk.Frame(info_frame_Normal)#0 Types Frame
-typfrm0.place(x=370,y=380,height=44,width=300)
-typfrm1 = tk.Frame(info_frame_Normal)#1 Types Frame
-typfrm1.place(x=370,y=380,height=44,width=300)
-typfrm2 = tk.Frame(info_frame_Normal)#2 Types Frame
-typfrm2.place(x=370,y=380,height=44,width=300)
-typfrm3 = tk.Frame(info_frame_Normal)#3 Types Frame
-typfrm3.place(x=370,y=380,height=44,width=300)
-typfrm4 = tk.Frame(info_frame_Normal)#4 Types Frame
-typfrm4.place(x=370,y=380,height=44,width=300)
+
 normal_pendulam_frame = tk.Frame(info_frame_Normal, width=678)#0 Types Frame
 normal_switch_state = False#True=on False=off
 def normal_Pendulam():
@@ -357,6 +348,59 @@ def browseIMG():
                 ("BMP Files", "*.bmp*"),("All Files","*.*")
         ))
         normart=filename
+def typfrm(frame):
+        typfrm0 = tk.Frame(frame)#0 Types Frame
+        typfrm0.place(x=370,y=380,height=44,width=300)
+        typfrm1 = tk.Frame(frame)#1 Types Frame
+        typfrm1.place(x=370,y=380,height=44,width=300)
+        typfrm2 = tk.Frame(frame)#2 Types Frame
+        typfrm2.place(x=370,y=380,height=44,width=300)
+        typfrm3 = tk.Frame(frame)#3 Types Frame
+        typfrm3.place(x=370,y=380,height=44,width=300)
+        typfrm4 = tk.Frame(frame)#4 Types Frame
+        typfrm4.place(x=370,y=380,height=44,width=300)
+        typv = tk.StringVar(info_frame_Normal,"0 Type")
+        dtyp1 = tk.StringVar(info_frame_Normal, value="Type 1")#Display Type1
+        dtyp2 = tk.StringVar(info_frame_Normal, value="Type 2")#Display Type2
+        dtyp3 = tk.StringVar(info_frame_Normal, value="Type 3")#Display Type3
+        dtyp4 = tk.StringVar(info_frame_Normal, value="Type 4")#Display Type4
+        typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
+        etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#1 Type 1
+        etyp1_1.place(x=00, y=1, height=40, width=50)
+        etyp2_1 = tk.Entry(typfrm2, textvariable=dtyp1)#2 Type 1
+        etyp2_1.place(x=00, y=1, height=40, width=50)
+        etyp2_2 = tk.Entry(typfrm2, textvariable=dtyp2)#2 Type 2
+        etyp2_2.place(x=60, y=1, height=40, width=50)
+        etyp3_1 = tk.Entry(typfrm3, textvariable=dtyp1)#3 Type 1
+        etyp3_1.place(x=0, y=1, height=40, width=50)
+        etyp3_2 = tk.Entry(typfrm3, textvariable=dtyp2)#3 Type 2
+        etyp3_2.place(x=60, y=1, height=40, width=50)
+        etyp3_3 = tk.Entry(typfrm3, textvariable=dtyp3)#3 Type 3
+        etyp3_3.place(x=120, y=1, height=40, width=50)
+        etyp4_1 = tk.Entry(typfrm4, textvariable=dtyp1)#4 Type 1
+        etyp4_1.place(x=00, y=1, height=40, width=50)
+        etyp4_2 = tk.Entry(typfrm4, textvariable=dtyp2)#4 Type 2
+        etyp4_2.place(x=60, y=1, height=40, width=50)
+        etyp4_3 = tk.Entry(typfrm4, textvariable=dtyp3)#4 Type 3
+        etyp4_3.place(x=120, y=1, height=40, width=50)
+        etyp4_4 = tk.Entry(typfrm4, textvariable=dtyp4)#4 Type 4
+        etyp4_4.place(x=180, y=1, height=40, width=50)
+        #No of Types
+        typfrm0.tkraise()        
+        def no_of_typs():
+                dtypvg = typv.get()
+                if dtypvg == '0 Types':
+                        typfrm0.tkraise()
+                elif dtypvg == '1 Types':
+                        typfrm1.tkraise()
+                elif dtypvg == '2 Types':
+                        typfrm2.tkraise()
+                elif dtypvg == '3 Types':
+                        typfrm3.tkraise()
+                elif dtypvg == '4 Types':
+                        typfrm4.tkraise()
+        etyp = tk.Spinbox(frame, values=typlst, state = 'readonly', textvariable=typv,command=no_of_typs)#Card Type Choice
+        etyp.place(x=300, y=380, height=40, width=60)
 #Monster Card
 class Monster_Info():
         def info_Normal_Monster():
@@ -423,51 +467,11 @@ class Monster_Info():
                 htsz.place(x=540, y=280)
                 etsz = tk.Spinbox(info_frame_Normal, from_=15 , to = 30, state = 'readonly', textvariable=dtsz)#Card Type Choice#Enter Title
                 etsz.place(x=545, y=320, height=40, width=60)
-                #Types
-                dtypv = tk.StringVar(info_frame_Normal,"0 Type")
-                dtyp1 = tk.StringVar(info_frame_Normal, value="Type 1")#Display Type1
-                dtyp2 = tk.StringVar(info_frame_Normal, value="Type 2")#Display Type2
-                dtyp3 = tk.StringVar(info_frame_Normal, value="Type 3")#Display Type3
-                dtyp4 = tk.StringVar(info_frame_Normal, value="Type 4")#Display Type4
+                #Types                
                 htyp = Label(info_frame_Normal, text="Card Type", font=("SAO UI", 18))#Type Heading
                 htyp.place(x=10, y=385)
-                typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
-                etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#1 Type 1
-                etyp1_1.place(x=00, y=1, height=40, width=50)
-                etyp2_1 = tk.Entry(typfrm2, textvariable=dtyp1)#2 Type 1
-                etyp2_1.place(x=00, y=1, height=40, width=50)
-                etyp2_2 = tk.Entry(typfrm2, textvariable=dtyp2)#2 Type 2
-                etyp2_2.place(x=60, y=1, height=40, width=50)
-                etyp3_1 = tk.Entry(typfrm3, textvariable=dtyp1)#3 Type 1
-                etyp3_1.place(x=0, y=1, height=40, width=50)
-                etyp3_2 = tk.Entry(typfrm3, textvariable=dtyp2)#3 Type 2
-                etyp3_2.place(x=60, y=1, height=40, width=50)
-                etyp3_3 = tk.Entry(typfrm3, textvariable=dtyp3)#3 Type 3
-                etyp3_3.place(x=120, y=1, height=40, width=50)
-                etyp4_1 = tk.Entry(typfrm4, textvariable=dtyp1)#4 Type 1
-                etyp4_1.place(x=00, y=1, height=40, width=50)
-                etyp4_2 = tk.Entry(typfrm4, textvariable=dtyp2)#4 Type 2
-                etyp4_2.place(x=60, y=1, height=40, width=50)
-                etyp4_3 = tk.Entry(typfrm4, textvariable=dtyp3)#4 Type 3
-                etyp4_3.place(x=120, y=1, height=40, width=50)
-                etyp4_4 = tk.Entry(typfrm4, textvariable=dtyp4)#4 Type 4
-                etyp4_4.place(x=180, y=1, height=40, width=50)
-                #No of Types
-                typfrm0.tkraise()        
-                def no_of_typs():
-                        dtypvg = dtypv.get()
-                        if dtypvg == '0 Types':
-                                typfrm0.tkraise()
-                        elif dtypvg == '1 Types':
-                                typfrm1.tkraise()
-                        elif dtypvg == '2 Types':
-                                typfrm2.tkraise()
-                        elif dtypvg == '3 Types':
-                                typfrm3.tkraise()
-                        elif dtypvg == '4 Types':
-                                typfrm4.tkraise()
-                etyp = tk.Spinbox(info_frame_Normal, values=typlst, state = 'readonly', textvariable=dtypv,command=no_of_typs)#Card Type Choice
-                etyp.place(x=300, y=380, height=40, width=60)
+                #typ
+                typfrm(info_frame_Normal)
                 #ATK/DEF
                 datk = tk.IntVar(info_frame_Normal)#Display ATK
                 ddef = tk.IntVar(info_frame_Normal)#Display DEF
