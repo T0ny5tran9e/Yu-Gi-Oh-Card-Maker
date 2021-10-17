@@ -73,9 +73,8 @@ def normal_Pendulam():
         ecprt = tk.Entry(info_frame_Normal, textvariable=dcprt)#Enter Title
         ecprt.place(x=400, y=520, height=40, width=200)
         def switch():
-                global normal_switch_state
-                                
-                # Determin is on or off
+                global normal_switch_state                
+                # Determin Pendulam is on or off
                 if normal_switch_state:
                         info_frame_Normal.place_forget()#Forget Previous Normal Monster Frame if Exist
                         info_frame_Normal.place(x=300,y=50)#Update new Normal Monster Frame
@@ -312,7 +311,7 @@ temp_card_img = tk.Frame(ui, width=350, height=485)
 temp_card_img.place(x=999,y=50)
 temp_card_img.pack_propagate(0) 
 temp_card_img.config(borderwidth=5, relief=SUNKEN) 
-
+#Clear contents in frame
 def frame_clear():
         for i in info_frame_Normal.winfo_children():
                 i.place_forget()
@@ -335,10 +334,9 @@ def frame_clear():
         for i in info_frame_Trap.winfo_children():
                 i.place_forget()
         for i in info_frame_Spell.winfo_children():
-                i.place_forget()
-        
+                i.place_forget()  
 #Browse Image for card Artwork
-normart=None
+normart=0
 def browseIMG():
         global normart
         filename = filedialog.askopenfilename(initialdir = "/", title = "Select an Image for Artwork", filetypes = 
@@ -348,7 +346,8 @@ def browseIMG():
                 ("BMP Files", "*.bmp*"),("All Files","*.*")
         ))
         normart=filename
-def typfrm(frame):
+#Selecting types
+def typfrm(frame,typv,dtyp1,dtyp2,dtyp3,dtyp4):
         typfrm0 = tk.Frame(frame)#0 Types Frame
         typfrm0.place(x=370,y=380,height=44,width=300)
         typfrm1 = tk.Frame(frame)#1 Types Frame
@@ -359,11 +358,7 @@ def typfrm(frame):
         typfrm3.place(x=370,y=380,height=44,width=300)
         typfrm4 = tk.Frame(frame)#4 Types Frame
         typfrm4.place(x=370,y=380,height=44,width=300)
-        typv = tk.StringVar(info_frame_Normal,"0 Type")
-        dtyp1 = tk.StringVar(info_frame_Normal, value="Type 1")#Display Type1
-        dtyp2 = tk.StringVar(info_frame_Normal, value="Type 2")#Display Type2
-        dtyp3 = tk.StringVar(info_frame_Normal, value="Type 3")#Display Type3
-        dtyp4 = tk.StringVar(info_frame_Normal, value="Type 4")#Display Type4
+        
         typlst = ['0 Types','1 Types', '2 Types', '3 Types', '4 Types']
         etyp1_1 = tk.Entry(typfrm1, textvariable=dtyp1)#1 Type 1
         etyp1_1.place(x=00, y=1, height=40, width=50)
@@ -401,6 +396,8 @@ def typfrm(frame):
                         typfrm4.tkraise()
         etyp = tk.Spinbox(frame, values=typlst, state = 'readonly', textvariable=typv,command=no_of_typs)#Card Type Choice
         etyp.place(x=300, y=380, height=40, width=60)
+
+        #val=inputx
 #Monster Card
 class Monster_Info():
         def info_Normal_Monster():
@@ -444,8 +441,7 @@ class Monster_Info():
                 erare.place(x=450, y=130, height=40, width=150)
                 #Button for Selecting Image
                 artbrws = tk.Button(info_frame_Normal, text = 'CLICK TO CHANGE THE ARTWORK', bd = '5', font=myFont, command = browseIMG)
-                artbrws.place(x=100, y=180, height=40, width=500)
-                
+                artbrws.place(x=100, y=180, height=40, width=500)                
                 #Deck Code
                 ddcd = tk.StringVar(info_frame_Normal, value="Enter Code")#Display Deck Code
                 hdkcod = Label(info_frame_Normal, text="Card's Deck Code", font=("SAO UI", 18))#Deck Code Heading
@@ -460,7 +456,6 @@ class Monster_Info():
                 dscrboxsb = tk.Scrollbar(dscrbox,orient='vertical', command=dscrbox.yview)#Description Box Scrollbar
                 dscrboxsb.pack(side='right', fill='both')
                 dscrbox['yscrollcommand'] = dscrboxsb.set
-                ddscrbox = tk.StringVar(info_frame_Normal,value=dscrbox)#Display Deck Code
                 #Font Size
                 dtsz = tk.StringVar(info_frame_Normal, value="29")#Display Deck Code
                 htsz = Label(info_frame_Normal, text="Font Size", font=("SAO UI", 18))#Deck Code Heading
@@ -470,8 +465,12 @@ class Monster_Info():
                 #Types                
                 htyp = Label(info_frame_Normal, text="Card Type", font=("SAO UI", 18))#Type Heading
                 htyp.place(x=10, y=385)
-                #typ
-                typfrm(info_frame_Normal)
+                dtyp1 = tk.StringVar(info_frame_Normal, value="Type 1")#Display Type1
+                dtyp2 = tk.StringVar(info_frame_Normal, value="Type 2")#Display Type2
+                dtyp3 = tk.StringVar(info_frame_Normal, value="Type 3")#Display Type3
+                dtyp4 = tk.StringVar(info_frame_Normal, value="Type 4")#Display Type4
+                typv = tk.StringVar(info_frame_Normal,"0 Type")
+                typfrm(info_frame_Normal,typv,dtyp1,dtyp2,dtyp3,dtyp4)
                 #ATK/DEF
                 datk = tk.IntVar(info_frame_Normal)#Display ATK
                 ddef = tk.IntVar(info_frame_Normal)#Display DEF
@@ -487,8 +486,7 @@ class Monster_Info():
                 from info_hub import normal_info
                 normal_Pendulam()
                 #Generate Button
-                #dart=browseIMG()
-                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont, command=lambda:normal_info(dtit,dat,dlvl,dholo,drare,normart,ddcd,ddscrbox,dtsz))
+                normgen = tk.Button(ui, text = 'Generate', bd = '5', font=myFont, command=lambda:normal_info(dtit,dat,dlvl,dholo,drare,normart,ddcd,dscrbox,dtsz,typv,dtyp1,dtyp2,dtyp3,dtyp4,datk,ddef,normal_switch_state))
                 normgen.place(x=1100, y=550, height=40, width=100)
                 #Save Button
                 normsave = tk.Button(ui, text = 'Save', bd = '5', font=myFont)
